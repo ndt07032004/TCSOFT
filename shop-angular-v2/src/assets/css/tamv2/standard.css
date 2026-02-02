@@ -1,0 +1,302 @@
+/* ===================================
+   STANDARD COMMON STYLES
+   =================================== */
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles - Chuyên nghiệp và gọn gàng */
+.header {
+    background: #ffffff;
+    padding: 12px 40px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header .logo {
+    max-height: 50px;
+    width: auto;
+    transition: opacity 0.2s ease;
+}
+
+.header .logo:hover {
+    opacity: 0.8;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar_item {
+    position: relative;
+}
+
+.navbar_item a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 6px 12px;
+    transition: color 0.2s ease;
+    border-radius: 4px;
+}
+
+.navbar_item a:hover {
+    color: #ee4d2d;
+}
+
+.navbar_right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.navbar_item_right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar_icon {
+    margin-right: 6px;
+    font-size: 16px;
+}
+
+/* Account Dropdown */
+.account-dropdown {
+    position: relative;
+}
+
+.account-toggle {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.account-toggle:hover {
+    background: #f5f5f5;
+}
+
+.account-dropdown.active .account-toggle {
+    background: #f0f0f0;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: #ffffff;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    list-style: none;
+    padding: 6px;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    z-index: 1001;
+    border: 1px solid #e0e0e0;
+}
+
+.account-dropdown:hover .dropdown-menu,
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 0;
+    margin: 1px 0;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu li:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 14px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.dropdown-menu li a:hover {
+    background: #f5f5f5;
+    color: #ee4d2d;
+}
+
+.dropdown-menu li > i {
+    width: 18px;
+    text-align: center;
+    font-size: 14px;
+    transition: color 0.2s ease;
+    color: #666;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    margin-right: 14px;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.dropdown-menu li a:hover i {
+    color: #ee4d2d;
+}
+
+/* Đăng xuất - styling đặc biệt */
+.dropdown-menu li:last-child {
+    margin-top: 4px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 4px;
+}
+
+.dropdown-menu li:last-child a {
+    color: #ee4d2d;
+}
+
+.dropdown-menu li:last-child i {
+    color: #ee4d2d;
+}
+
+.dropdown-menu li:last-child a:hover {
+    background: #fff5f5;
+    color: #d73211;
+}
+
+/* Breadcrumb Navigation */
+.inner-position {
+    background: #ffffff;
+    padding: 18px 40px;
+    border-bottom: 2px solid rgba(211, 47, 47, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    margin-bottom: 0;
+    box-shadow: 0 2px 8px rgba(211, 47, 47, 0.05);
+}
+
+.inner-position p {
+    margin: 0;
+    color: #666;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.inner-position p i {
+    color: #d32f2f;
+    font-size: 16px;
+}
+
+.inner-position a {
+    color: #d32f2f;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.inner-position a i {
+    font-size: 14px;
+}
+
+.inner-position a:hover {
+    color: #ffffff;
+    background: #d32f2f;
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(211, 47, 47, 0.25);
+}
+
+.inner-position a::after {
+    content: '';
+    margin-left: 0;
+    color: #d32f2f;
+    font-weight: 700;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.inner-position a:hover::after {
+    transform: translateX(0);
+    color: #ffffff;
+}
+
+.inner-position span {
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-left: 0;
+    padding: 6px 12px;
+    background: rgba(211, 47, 47, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid #d32f2f;
+}
+
+.inner-position span::before {
+    content: '';
+    margin-right: 0;
+    color: #d32f2f;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .inner-position {
+        padding: 14px 20px;
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+}
+

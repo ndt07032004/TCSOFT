@@ -1,0 +1,164 @@
+<div class="container py-10">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16 relative z-10">
+        <div>
+            <a routerLink="/admin/dashboard"
+                class="inline-flex items-center text-slate-500 hover:text-shopee-primary text-xs font-semibold uppercase tracking-widest mb-4 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i> Quay lại bảng điều khiển
+            </a>
+            <h1 class="text-4xl font-black text-slate-950 tracking-tighter mb-2">Quản Lý Sản Phẩm</h1>
+            <p class="text-slate-500 font-medium text-sm">Sắp xếp và quản lý bộ sưu tập sản phẩm cao cấp của bạn.</p>
+        </div>
+        <button (click)="openAddModal()" class="btn-primary px-10 flex items-center space-x-3">
+            <i class="fas fa-plus text-xs"></i>
+            <span class="uppercase tracking-widest text-[11px]">Thêm sản phẩm mới</span>
+        </button>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="loading"
+        class="flex flex-col items-center justify-center py-40 bg-white border border-slate-100 rounded-2xl mb-12">
+        <div class="w-16 h-16 border-4 border-slate-100 border-t-primary rounded-full animate-spin"></div>
+        <p class="mt-8 text-[11px] font-black text-slate-400 uppercase tracking-widest animate-pulse">Đang đồng bộ kho
+            hàng...</p>
+    </div>
+
+    <!-- Filter Canvas -->
+    <div *ngIf="!loading" class="filters-card">
+        <div class="filters-grid">
+            <div class="relative group">
+                <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Tìm kiếm sản phẩm..."
+                    class="input w-full pl-12">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-300"></i>
+            </div>
+            <select class="select" [(ngModel)]="selectedCategory" (change)="applyFilters()">
+                <option value="">Tất cả danh mục</option>
+                <option *ngFor="let cat of categories" [value]="cat.value">{{ cat.label }}</option>
+            </select>
+            <button (click)="onSearch()" class="btn-search px-8">Lọc</button>
+        </div>
+    </div>
+
+
+
+
+    <!-- Sleek Data Table -->
+    <div *ngIf="!loading" class="table-card">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-50/50 border-b border-slate-100/50">
+                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">ID</th>
+                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Hình ảnh
+                        </th>
+                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">
+                            Sản phẩm</th>
+                        <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Danh mục
+                        </th>
+                        <th
+                            class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-right">
+                            Giá bán</th>
+                        <th
+                            class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-center">
+                            Tồn kho</th>
+                        <th
+                            class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-right">
+                            Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-50">
+                    <tr *ngFor="let product of products" class="hover:bg-slate-50/50 transition-premium group">
+                        <td class="px-8 py-6">
+                            <span class="text-[10px] font-black text-slate-400 tracking-widest">#{{ product.idSP
+                                }}</span>
+                        </td>
+                        <td class="px-8 py-6">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-slate-100 overflow-hidden border border-slate-100 shadow-sm transform group-hover:scale-110 transition-transform">
+                                <img [src]="product.imageUrl" class="w-full h-full object-cover">
+                            </div>
+                        </td>
+                        <td class="px-8 py-6">
+                            <div class="text-sm font-black text-slate-950 tracking-tight">{{ product.name }}</div>
+                            <div class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">{{
+                                product.size }} • {{ getColorLabel(product.color) }}</div>
+                        </td>
+                        <td class="px-8 py-6">
+                            <span
+                                class="inline-flex items-center px-4 py-1.5 rounded-full text-[9px] font-black bg-indigo-50 text-primary border border-indigo-100 uppercase tracking-widest">
+                                {{ getCategoryLabel(product.category) }}
+                            </span>
+                        </td>
+                        <td class="px-8 py-6 text-right">
+                            <div class="text-sm font-black text-slate-950 tracking-tighter">{{ product.price |
+                                number:'1.0-0' }}₫</div>
+                        </td>
+                        <td class="px-8 py-6 text-center">
+                            <div class="flex items-center justify-center">
+                                <span
+                                    class="px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest flex items-center space-x-2"
+                                    [ngClass]="product.stockQuantity < 10 ? 'bg-rose-50 text-rose-500 border border-rose-100' : 'bg-emerald-50 text-emerald-500 border border-emerald-100'">
+                                    <span class="w-1.5 h-1.5 rounded-full animate-pulse"
+                                        [ngClass]="product.stockQuantity < 10 ? 'bg-rose-500' : 'bg-emerald-500'"></span>
+                                    <span>{{ product.stockQuantity }} PCS</span>
+                                </span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-6 text-right">
+                            <div
+                                class="flex items-center justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-premium">
+                                <button (click)="openEditModal(product)"
+                                    class="w-10 h-10 flex items-center justify-center bg-white text-slate-400 hover:text-primary hover:shadow-lg rounded-xl transition-premium border border-slate-100">
+                                    <i class="fas fa-edit text-xs"></i>
+                                </button>
+                                <button (click)="openVariantModal(product)" title="Thêm biến thể (Size/Màu)"
+                                    class="w-10 h-10 flex items-center justify-center bg-white text-slate-400 hover:text-emerald-500 hover:shadow-lg rounded-xl transition-premium border border-slate-100">
+                                    <i class="fas fa-copy text-xs"></i>
+                                </button>
+                                <button (click)="deleteProduct(product)"
+                                    class="w-10 h-10 flex items-center justify-center bg-white text-slate-400 hover:text-rose-500 hover:shadow-lg rounded-xl transition-premium border border-slate-100">
+                                    <i class="fas fa-trash text-xs"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="products.length === 0" class="px-8 py-24 text-center">
+            <div class="text-5xl mb-6 opacity-10">📂</div>
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Không tìm thấy sản phẩm nào</p>
+        </div>
+
+        <!-- Premium Pagination -->
+        <div class="px-10 py-8 bg-slate-50/50 border-t border-slate-100/50 flex items-center justify-between">
+            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">
+                Đang hiển thị: <span class="text-slate-950">{{ products.length }}</span> / {{ totalCount }}
+            </p>
+            <div class="flex items-center space-x-3">
+                <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"
+                    class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-100 text-slate-400 hover:text-primary transition-premium disabled:opacity-20">
+                    <i class="fas fa-chevron-left text-xs"></i>
+                </button>
+                <div class="flex items-center space-x-2 shadow-sm rounded-xl bg-white p-1">
+                    <button *ngFor="let page of [].constructor(totalPages); let i = index"
+                        class="w-8 h-8 rounded-lg text-[9px] font-black transition-premium flex items-center justify-center"
+                        [ngClass]="currentPage === (i + 1) ? 'bg-slate-950 text-white shadow-lg shadow-slate-950/20' : 'text-slate-400 hover:bg-slate-50'"
+                        (click)="goToPage(i + 1)">
+                        {{ i + 1 }}
+                    </button>
+                </div>
+                <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"
+                    class="w-10 h-10 flex items-center justify-center rounded-xl bg-white border border-slate-100 text-slate-400 hover:text-primary transition-premium disabled:opacity-20">
+                    <i class="fas fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Form Modal -->
+    <app-product-form *ngIf="showModal" [product]="selectedProduct" [variantTemplate]="variantTemplate"
+        (onClose)="closeModal()" (onSubmit)="onModalClose(true)">
+    </app-product-form>
+</div>

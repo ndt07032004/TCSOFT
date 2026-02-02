@@ -1,0 +1,358 @@
+/* Navbar Admin/Saff Styles */
+.navbar {
+    background: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.navbar-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.navbar-title button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.navbar-title button:hover {
+    background: #f0f0f0;
+}
+
+.navbar-title a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.navbar-title a:hover {
+    color: #007bff;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+    min-width: fit-content;
+}
+
+.notification-wrapper {
+    position: relative;
+}
+
+.notification-wrapper i {
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.notification-wrapper i:hover {
+    color: #007bff;
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.notification-box {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: block; /* Luôn hiển thị */
+    z-index: 1000;
+}
+
+.notification-box.hide {
+    display: none; /* Ẩn khi có class hide */
+}
+
+.notification-box .title {
+    padding: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+
+.notification-box .item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.notification-box .item:hover {
+    background: #f8f9fa;
+}
+
+.notification-box .item span {
+    margin-left: auto;
+    font-size: 12px;
+    color: #999;
+}
+
+.notification-box .see-all {
+    padding: 12px 15px;
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.notification-box .see-all:hover {
+    background: #f8f9fa;
+}
+
+#fullscreenBtn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+#fullscreenBtn:hover {
+    background: #f0f0f0;
+    color: #007bff;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.loginicon {
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.loginicon:first-child {
+    background: #007bff;
+    color: white;
+}
+
+.loginicon:first-child:hover {
+    background: #0056b3;
+}
+
+.loginicon:last-child {
+    background: #28a745;
+    color: white;
+}
+
+.loginicon:last-child:hover {
+    background: #218838;
+}
+
+.user-info {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s;
+    flex-shrink: 0;
+    min-width: fit-content;
+}
+
+.user-info:hover {
+    background: #f0f0f0;
+}
+
+.user-info i {
+    font-size: 22px;
+    color: #4361ee;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: auto;
+    height: auto;
+}
+
+.user-info i.fa-user-tie {
+    font-size: 22px;
+    color: #4361ee;
+}
+
+#usernameDisplay {
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+    max-width: none;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    min-width: 200px;
+    display: none;
+    z-index: 1000;
+    margin-top: 5px;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 12px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-dropdown a:hover {
+    background: #f8f9fa;
+}
+
+.user-dropdown a i {
+    font-size: 16px;
+    color: #666;
+}
+
+.user-dropdown .user-info-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-dropdown .user-info-item i {
+    font-size: 16px;
+    color: #666;
+}
+
+.user-dropdown a.logout-link {
+    color: #dc3545;
+}
+
+.user-dropdown a.logout-link:hover {
+    background: #fff5f5;
+    color: #c82333;
+}
+
+.user-dropdown a.logout-link i {
+    color: #dc3545;
+}
+
+/* Sidebar Collapse Support */
+.sidebar.collapsed {
+    width: 70px;
+    transition: width 0.3s ease;
+}
+
+.sidebar.collapsed .brand span {
+    display: none;
+}
+
+.sidebar.collapsed ul li a span:not(.fa),
+.sidebar.collapsed .submenu-toggle span:not(.fa) {
+    display: none;
+}
+
+.sidebar.collapsed .submenu {
+    display: none;
+}
+
+.main.sidebar-collapsed {
+    margin-left: 70px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Badge hidden when no notifications */
+.badge:empty,
+.badge[style*="display: none"] {
+    display: none !important;
+}
+
+/* Notification item clickable */
+.notification-box .item {
+    cursor: pointer;
+}
+
+.notification-box .item:active {
+    background: #e9ecef;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .navbar-title a {
+        display: none;
+    }
+    
+    .auth-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .sidebar.collapsed {
+        width: 0;
+    }
+    
+    .main.sidebar-collapsed {
+        margin-left: 0;
+    }
+}
+

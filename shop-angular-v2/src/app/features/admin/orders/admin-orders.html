@@ -1,0 +1,256 @@
+<div class="container py-10 px-6">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
+        <div>
+            <a routerLink="/admin/dashboard"
+                class="inline-flex items-center text-slate-500 hover:text-shopee-primary text-xs font-semibold uppercase tracking-widest mb-4 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i> Quay lại bảng điều khiển
+            </a>
+            <h1 class="text-4xl font-black text-slate-950 tracking-tighter mb-2">Quản Lý Đơn Hàng</h1>
+            <p class="text-slate-500 font-medium">Xử lý và theo dõi trạng thái các đơn hàng từ khách hàng.</p>
+        </div>
+        <div class="flex gap-4">
+            <div class="flex gap-2 items-center">
+                <div
+                    class="flex items-center space-x-2 bg-white border border-slate-200 rounded-lg px-3 py-1.5 shadow-sm">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">Lọc</span>
+                    <select [(ngModel)]="selectedStatusFilter" (change)="onSearch()"
+                        class="text-xs font-bold text-slate-700 outline-none bg-transparent cursor-pointer min-w-[100px]">
+                        <option value="">Tất cả</option>
+                        <option *ngFor="let s of statuses" [value]="s">{{ getStatusLabel(s) }}</option>
+                    </select>
+                </div>
+                <div
+                    class="flex items-center space-x-2 bg-white border border-slate-200 rounded-lg px-3 py-1.5 shadow-sm">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">Từ</span>
+                    <input type="date" [(ngModel)]="filterFromDate" (change)="onSearch()"
+                        class="text-xs font-bold text-slate-700 outline-none bg-transparent">
+                </div>
+                <div
+                    class="flex items-center space-x-2 bg-white border border-slate-200 rounded-lg px-3 py-1.5 shadow-sm">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">Đến</span>
+                    <input type="date" [(ngModel)]="filterToDate" (change)="onSearch()"
+                        class="text-xs font-bold text-slate-700 outline-none bg-transparent">
+                </div>
+
+                <button (click)="resetFilters()" title="Xóa bộ lọc"
+                    class="h-[42px] w-[42px] flex items-center justify-center bg-white border border-slate-200 text-slate-400 hover:text-rose-600 hover:border-rose-200 rounded-lg transition-all shadow-sm">
+                    <i class="fas fa-redo-alt"></i>
+                </button>
+
+                <button (click)="exportData()" [disabled]="exporting"
+                    class="px-6 py-3 bg-white border border-slate-200 text-slate-600 text-[10px] font-black rounded-lg hover:bg-slate-900 hover:text-white transition-all shadow-sm uppercase tracking-widest flex items-center">
+                    <i *ngIf="exporting" class="fas fa-spinner fa-spin mr-2"></i>
+                    <i *ngIf="!exporting" class="fas fa-file-export mr-2"></i>
+                    {{ exporting ? 'Đang Xuất...' : 'Xuất Excel' }}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="loading"
+        class="flex flex-col items-center justify-center py-32 bg-white border border-slate-100 rounded-xl">
+        <div class="w-12 h-12 border-4 border-slate-100 border-t-slate-900 rounded-full animate-spin"></div>
+        <p class="mt-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Đang tải dữ liệu...</p>
+    </div>
+
+    <!-- Orders Table -->
+    <div *ngIf="!loading" class="table-card bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="table w-full text-left">
+                <thead class="bg-slate-50 border-b border-slate-200">
+                    <tr>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Mã Đơn
+                        </th>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Khách Hàng
+                        </th>
+                        <th class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest">Thời Gian
+                        </th>
+                        <th
+                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
+                            Giá Trị</th>
+                        <th
+                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">
+                            Trạng Thái</th>
+                        <th
+                            class="px-8 py-5 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
+                            Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    <tr *ngFor="let order of orders" class="hover:bg-slate-50 transition-colors">
+                        <td class="px-8 py-5">
+                            <span class="text-sm font-black text-slate-900 tracking-tighter">#{{ order.idDH }}</span>
+                        </td>
+                        <td class="px-8 py-5">
+                            <div class="text-sm font-bold text-slate-900">{{ order.receiverName }}</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-0.5">
+                                <i class="fas fa-phone-alt mr-1"></i> {{ order.receiverPhone }}
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-sm text-slate-600 font-medium">
+                            {{ order.orderDate | date:'dd/MM/yyyy • HH:mm' }}
+                        </td>
+                        <td class="px-8 py-5 text-right text-sm font-bold text-slate-900">
+                            {{ order.totalPrice | number:'1.0-0' }}₫
+                        </td>
+                        <td class="px-8 py-5">
+                            <div class="flex justify-center">
+                                <select [ngModel]="order.status" (ngModelChange)="updateStatus(order, $event)"
+                                    class="text-[9px] font-black px-4 py-1.5 rounded-full border outline-none transition-all cursor-pointer appearance-none uppercase tracking-widest text-center"
+                                    [ngClass]="{
+                                        'bg-amber-50 text-amber-600 border-amber-200': order.status === 'ChoXacNhan',
+                                        'bg-sky-50 text-sky-600 border-sky-200': order.status === 'DaXacNhan',
+                                        'bg-indigo-50 text-indigo-600 border-indigo-200': order.status === 'DaVanChuyen',
+                                        'bg-emerald-50 text-emerald-600 border-emerald-200': order.status === 'DaNhanHang',
+                                        'bg-rose-50 text-rose-600 border-rose-200': order.status === 'DaHuy'
+                                    }">
+                                    <option *ngFor="let s of statuses" [value]="s">{{ getStatusLabel(s) }}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-right">
+                            <div class="flex items-center justify-end space-x-2">
+                                <button (click)="viewDetails(order)"
+                                    class="w-8 h-8 flex items-center justify-center bg-white text-slate-400 hover:text-slate-900 border border-slate-200 rounded-md transition-all">
+                                    <i class="fas fa-eye text-[10px]"></i>
+                                </button>
+                                <button (click)="deleteOrder(order)"
+                                    class="w-8 h-8 flex items-center justify-center bg-white text-slate-400 hover:text-rose-600 border border-slate-200 rounded-md transition-all">
+                                    <i class="fas fa-trash-alt text-[10px]"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div *ngIf="totalPages > 1"
+            class="px-8 py-6 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                Đang hiển thị <span class="text-slate-900">{{ orders.length }}</span> / {{ totalCount }}
+            </p>
+            <div class="flex items-center space-x-2">
+                <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"
+                    class="w-8 h-8 flex items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-slate-900 disabled:opacity-30 transition-all">
+                    <i class="fas fa-chevron-left text-[10px]"></i>
+                </button>
+                <div class="px-4 py-1.5 bg-slate-900 text-white rounded-lg text-[10px] font-black tracking-widest">
+                    {{ currentPage }} / {{ totalPages }}
+                </div>
+                <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"
+                    class="w-8 h-8 flex items-center justify-center rounded-lg bg-white border border-slate-200 text-slate-400 hover:text-slate-900 disabled:opacity-30 transition-all">
+                    <i class="fas fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Details Modal -->
+<div *ngIf="showDetailsModal && selectedOrder"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
+        <!-- Header -->
+        <div class="px-8 py-6 border-b border-slate-100 flex items-center justify-between bg-white">
+            <div>
+                <h2 class="text-xl font-black text-slate-900 tracking-tight">Chi Tiết Đơn Hàng #{{ selectedOrder.idDH }}
+                </h2>
+                <div class="flex items-center space-x-4 mt-2">
+                    <span class="text-xs font-bold text-slate-500 flex items-center"><i
+                            class="far fa-calendar-alt mr-2"></i> {{ selectedOrder.orderDate | date:'dd/MM/yyyy HH:mm'
+                        }}</span>
+                    <span class="px-3 py-1 text-[9px] font-black rounded-full uppercase tracking-widest" [ngClass]="{
+                            'bg-amber-50 text-amber-600': selectedOrder.status === 'ChoXacNhan',
+                            'bg-sky-50 text-sky-600': selectedOrder.status === 'DaXacNhan',
+                            'bg-indigo-50 text-indigo-600': selectedOrder.status === 'DaVanChuyen',
+                            'bg-emerald-50 text-emerald-600': selectedOrder.status === 'DaNhanHang',
+                            'bg-rose-50 text-rose-600': selectedOrder.status === 'DaHuy'
+                        }">
+                        {{ getStatusLabel(selectedOrder.status) }}
+                    </span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button (click)="printOrder()" title="In hóa đơn"
+                    class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition-colors">
+                    <i class="fas fa-print"></i>
+                </button>
+                <button (click)="closeDetailsModal()"
+                    class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-50 text-slate-400 hover:text-rose-500 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="p-8 overflow-y-auto flex-1 space-y-8">
+            <!-- Info Grid -->
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Thông tin người
+                        nhận</h3>
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                        <p class="text-sm font-bold text-slate-900 mb-1">{{ selectedOrder.receiverName }}</p>
+                        <p class="text-sm font-medium text-slate-600 mb-1">{{ selectedOrder.receiverPhone }}</p>
+                        <p class="text-sm font-medium text-slate-600">{{ selectedOrder.shippingAddress }}</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Ghi chú đơn hàng
+                    </h3>
+                    <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 h-full">
+                        <p class="text-sm font-medium text-slate-600 italic">
+                            {{ selectedOrder.orderNotes || 'Không có ghi chú.' }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items -->
+            <div>
+                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Sản phẩm đã đặt</h3>
+                <div class="border border-slate-200 rounded-xl overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-50 border-b border-slate-200">
+                            <tr>
+                                <th class="px-6 py-3 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                                    Sản phẩm</th>
+                                <th
+                                    class="px-6 py-3 text-[10px] font-black text-slate-400 uppercase tracking-widest text-center">
+                                    SL</th>
+                                <th
+                                    class="px-6 py-3 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
+                                    Đơn giá</th>
+                                <th
+                                    class="px-6 py-3 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
+                                    Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr *ngFor="let item of selectedOrder.items">
+                                <td class="px-6 py-3 text-sm font-bold text-slate-700">{{ item.productName }}</td>
+                                <td class="px-6 py-3 text-center text-sm font-medium text-slate-600">{{ item.quantity }}
+                                </td>
+                                <td class="px-6 py-3 text-right text-sm font-medium text-slate-600">{{ item.price |
+                                    number:'1.0-0' }}₫</td>
+                                <td class="px-6 py-3 text-right text-sm font-black text-slate-900">{{ item.subTotal |
+                                    number:'1.0-0' }}₫</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="px-8 py-6 bg-slate-50 border-t border-slate-100 flex justify-end items-center space-x-4">
+            <span class="text-sm font-bold text-slate-500">Tổng thanh toán:</span>
+            <span class="text-2xl font-black text-rose-600 tracking-tighter">{{ selectedOrder.totalPrice |
+                number:'1.0-0' }}₫</span>
+        </div>
+    </div>
+</div>

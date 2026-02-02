@@ -1,0 +1,69 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\ao1-20260129082715.webp",
+      "PackagePath": "staticwebassets\\images\\products\\ao1-20260129082715.webp"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\aoke-20260125193648.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\aoke-20260125193648.jpg"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\aovestnam1nutdongbasic-20260129003024.png",
+      "PackagePath": "staticwebassets\\images\\products\\aovestnam1nutdongbasic-20260129003024.png"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\bo1-20260125152442.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\bo1-20260125152442.jpg"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\o-khoc-ngoi-jean-nam-n-dng-rng-mu-xanh-en-retro-unisex-fabuman-cht-b-khng-phai-bigsize-20260129020236.webp",
+      "PackagePath": "staticwebassets\\images\\products\\o-khoc-ngoi-jean-nam-n-dng-rng-mu-xanh-en-retro-unisex-fabuman-cht-b-khng-phai-bigsize-20260129020236.webp"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\o-thun-b-hoa-beyoutiful-gent-20260126091824.png",
+      "PackagePath": "staticwebassets\\images\\products\\o-thun-b-hoa-beyoutiful-gent-20260126091824.png"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\o-thun-en-new-skull-tee-nam-20260129080938.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\o-thun-en-new-skull-tee-nam-20260129080938.jpg"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\o-thun-trn-100-cotton-comfitex-happy-fabric-240gsm-form-oversize-unisex-nam-n-at500-verdant-20260129080317.webp",
+      "PackagePath": "staticwebassets\\images\\products\\o-thun-trn-100-cotton-comfitex-happy-fabric-240gsm-form-oversize-unisex-nam-n-at500-verdant-20260129080317.webp"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\qun-n-joggerqun-ng-rng-nam-n-phong-cch-hn-quc-mc-cc-cht-phi-line-20260129081736.webp",
+      "PackagePath": "staticwebassets\\images\\products\\qun-n-joggerqun-ng-rng-nam-n-phong-cch-hn-quc-mc-cc-cht-phi-line-20260129081736.webp"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\qun-short-logo-teelabqun-i-basic-dy-rt-cht-cotton-tha-mi-thong-mt-thm-ht-m-hi-nng-ng-20260129082149.webp",
+      "PackagePath": "staticwebassets\\images\\products\\qun-short-logo-teelabqun-i-basic-dy-rt-cht-cotton-tha-mi-thong-mt-thm-ht-m-hi-nng-ng-20260129082149.webp"
+    },
+    {
+      "Id": "E:\\TCSOFT\\QuanLyBanHangOnline\\wwwroot\\images\\products\\vng-tay-thp-titan-cao-cp-khng-g-kin-accessories-lc-tay-nam-n-unisex-ph-kin-thi-trang-basic-nhiu-mu-ty-chn-20260129082945.webp",
+      "PackagePath": "staticwebassets\\images\\products\\vng-tay-thp-titan-cao-cp-khng-g-kin-accessories-lc-tay-nam-n-unisex-ph-kin-thi-trang-basic-nhiu-mu-ty-chn-20260129082945.webp"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.QuanLyBanHangOnline.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.QuanLyBanHangOnline.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.QuanLyBanHangOnline.props",
+      "PackagePath": "build\\QuanLyBanHangOnline.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.QuanLyBanHangOnline.props",
+      "PackagePath": "buildMultiTargeting\\QuanLyBanHangOnline.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.QuanLyBanHangOnline.props",
+      "PackagePath": "buildTransitive\\QuanLyBanHangOnline.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

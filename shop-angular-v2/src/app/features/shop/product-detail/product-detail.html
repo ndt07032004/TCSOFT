@@ -1,0 +1,220 @@
+<div class="shopee-container py-8" *ngIf="product">
+    <div class="bg-white p-4 shadow-shopee rounded-sm">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+            <!-- Image Section -->
+            <div class="md:col-span-5">
+                <div
+                    class="relative aspect-square bg-slate-50 border border-slate-100 rounded-sm overflow-hidden group">
+                    <img [src]="getImageUrl(product.imageUrl)" [alt]="product.name"
+                        class="w-full h-full object-contain">
+
+                    <!-- Zoom Overlay (Shopee Style) -->
+                    <div
+                        class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="md:col-span-7 flex flex-col">
+                <div class="flex items-center space-x-2 mb-3">
+                    <div class="shopee-badge-mall px-1.5 py-0.5 text-[10px]">Mall</div>
+                    <h1 class="text-xl font-medium text-slate-900 leading-tight">{{ product.name }}</h1>
+                </div>
+
+                <!-- Product Stats -->
+                <div class="flex items-center space-x-4 mb-6 text-sm divide-x divide-slate-200">
+                    <div class="flex items-center space-x-1">
+                        <div class="flex items-center text-shopee-primary text-[10px]">
+                            <ng-container *ngFor="let star of getStarArray(product.averageRating)">
+                                <i class="fas fa-star" [class.text-shopee-primary]="star <= product.averageRating"
+                                    [class.text-slate-300]="star > product.averageRating"></i>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="pl-4">
+                        <span class="text-slate-900 border-b border-slate-900">{{ reviews.length }}</span>
+                        <span class="text-slate-500 ml-1">Đánh Giá</span>
+                    </div>
+                </div>
+
+                <!-- Price Box -->
+                <div class="bg-slate-50 p-5 rounded-sm flex items-center space-x-4 mb-8">
+                    <span class="text-3xl font-medium text-shopee-primary">₫{{ product.price | number:'1.0-0' }}</span>
+                </div>
+
+                <!-- Attributes -->
+                <div class="space-y-6 px-4">
+                    <div class="flex items-center">
+                        <label class="w-28 text-sm text-slate-500">Vận Chuyển</label>
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-truck-moving text-emerald-500 mt-1"></i>
+                            <div>
+                                <div class="text-sm text-slate-800">Vận Chuyển Miễn Phí</div>
+                                <div class="text-[12px] text-slate-400">Miễn phí vận chuyển cho đơn hàng trên ₫0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <label class="w-28 text-sm text-slate-500">Màu sắc</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button *ngFor="let c of uniqueColors" (click)="selectVariant('color', c)"
+                                class="px-4 py-1.5 border border-slate-200 rounded-sm text-sm hover:border-shopee-primary hover:text-shopee-primary transition-all bg-white font-medium"
+                                [class.border-shopee-primary]="product.color == c"
+                                [class.text-shopee-primary]="product.color == c">
+                                {{ getColorLabel(c) }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <label class="w-28 text-sm text-slate-500">Kích thước</label>
+                        <div class="flex flex-wrap gap-2">
+                            <button *ngFor="let s of uniqueSizes" (click)="selectVariant('size', s)"
+                                class="px-4 py-1.5 border border-slate-200 rounded-sm text-sm hover:border-shopee-primary hover:text-shopee-primary transition-all bg-white font-medium"
+                                [class.border-shopee-primary]="product.size == s"
+                                [class.text-shopee-primary]="product.size == s">
+                                {{ s }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <label class="w-28 text-sm text-slate-500">Số lượng</label>
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="flex items-center h-8 border border-slate-200 rounded-sm overflow-hidden text-sm">
+                                <button (click)="quantity = quantity > 1 ? quantity - 1 : 1"
+                                    class="w-8 h-full flex items-center justify-center hover:bg-slate-50 border-r border-slate-200 transition-colors">
+                                    <i class="fas fa-minus text-[10px]"></i>
+                                </button>
+                                <input type="text" [(ngModel)]="quantity"
+                                    class="w-12 text-center bg-white border-none outline-none font-medium">
+                                <button (click)="quantity = quantity + 1"
+                                    class="w-8 h-full flex items-center justify-center hover:bg-slate-50 border-l border-slate-200 transition-colors">
+                                    <i class="fas fa-plus text-[10px]"></i>
+                                </button>
+                            </div>
+                            <span class="text-sm text-slate-500">{{ product.stockQuantity }} sản phẩm có sẵn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="mt-10 flex gap-4 px-4">
+                    <button (click)="addToCart()" [disabled]="product.stockQuantity <= 0"
+                        class="flex-1 h-12 bg-shopee-primary/10 text-shopee-primary border border-shopee-primary rounded-sm font-medium hover:bg-shopee-primary/20 transition-colors flex items-center justify-center space-x-2">
+                        <i class="fas fa-cart-plus"></i>
+                        <span>Thêm Vào Giỏ Hàng</span>
+                    </button>
+                    <button (click)="buyNow()" [disabled]="product.stockQuantity <= 0"
+                        class="flex-1 h-12 bg-shopee-primary text-white rounded-sm font-medium hover:opacity-95 shadow-sm transition-opacity uppercase">
+                        Mua Ngay
+                    </button>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center space-x-6 px-4">
+                    <div class="flex items-center space-x-2 text-xs text-slate-500">
+                        <i class="fas fa-undo text-shopee-primary"></i>
+                        <span>7 ngày miễn phí trả hàng</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs text-slate-500">
+                        <i class="fas fa-shield-alt text-shopee-primary"></i>
+                        <span>Hàng chính hãng 100%</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs text-slate-500">
+                        <i class="fas fa-shipping-fast text-shopee-primary"></i>
+                        <span>Miễn phí vận chuyển</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="mt-4 bg-white p-6 shadow-shopee rounded-sm">
+        <h2 class="bg-slate-50 p-4 text-lg font-medium text-slate-800 uppercase mb-6 rounded-sm">CHI TIẾT SẢN PHẨM</h2>
+        <div class="px-4 space-y-4">
+            <div class="flex text-sm">
+                <label class="w-32 text-slate-500">Danh Mục</label>
+                <div class="flex items-center space-x-2 text-shopee-primary">
+                    <a routerLink="/">Trang Chủ</a>
+                    <i class="fas fa-chevron-right text-[8px] text-slate-400"></i>
+                    <a routerLink="/products">{{ getCategoryLabel(product.category) }}</a>
+                </div>
+            </div>
+            <div class="flex text-sm">
+                <label class="w-32 text-slate-500">Kho hàng</label>
+                <span class="text-slate-800">{{ product.stockQuantity }}</span>
+            </div>
+            <div class="flex text-sm">
+                <label class="w-32 text-slate-500">Gửi từ</label>
+                <span class="text-slate-800">Hà Nội</span>
+            </div>
+        </div>
+
+        <h2 class="bg-slate-50 p-4 text-lg font-medium text-slate-800 uppercase my-6 rounded-sm">MÔ TẢ SẢN PHẨM</h2>
+        <div class="px-4 text-sm text-slate-800 leading-relaxed whitespace-pre-line">
+            {{ product.description || 'Chưa có mô tả cho sản phẩm này.' }}
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="mt-4 bg-white p-6 shadow-shopee rounded-sm">
+        <h2 class="text-lg font-medium text-slate-800 uppercase mb-6">ĐÁNH GIÁ SẢN PHẨM</h2>
+
+        <!-- Add Review Shell -->
+        <div class="bg-slate-50 p-6 rounded-sm mb-8 border border-slate-100">
+            <h3 class="font-bold text-slate-800 mb-4">Chia sẻ cảm nhận của bạn</h3>
+            <div class="flex items-center mb-6">
+                <span class="mr-6 text-sm text-slate-500">Đánh giá sao:</span>
+                <div class="flex space-x-2">
+                    <button *ngFor="let i of [1,2,3,4,5]" (click)="setRating(i)" (mouseenter)="hoverRating = i"
+                        (mouseleave)="hoverRating = 0"
+                        class="text-2xl focus:outline-none transition-transform hover:scale-110">
+                        <i class="fas fa-star" [class.text-shopee-primary]="i <= (hoverRating || newReview.rating)"
+                            [class.text-slate-200]="i > (hoverRating || newReview.rating)"></i>
+                    </button>
+                </div>
+            </div>
+            <textarea [(ngModel)]="newReview.comment" rows="3"
+                class="w-full px-4 py-3 border border-slate-200 rounded-sm focus:border-shopee-primary outline-none mb-4 text-sm"
+                placeholder="Nội dung đánh giá..."></textarea>
+            <button (click)="submitReview()" [disabled]="submittingReview"
+                class="shopee-button px-8 h-10 font-bold uppercase disabled:opacity-50">
+                {{ submittingReview ? 'Đang gửi...' : 'Gửi đánh giá' }}
+            </button>
+        </div>
+
+        <!-- Reviews List -->
+        <div class="space-y-8 divide-y divide-slate-100">
+            <div *ngFor="let review of reviews" class="pt-6 flex space-x-4">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-user text-slate-300"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="text-[12px] font-medium text-slate-800 mb-1">nguoidung_{{ review.idSP }}</div>
+                    <div class="flex text-shopee-primary text-[10px] mb-2">
+                        <i *ngFor="let i of [1,2,3,4,5]" class="fas fa-star"
+                            [class.opacity-20]="i > getRatingNumber(review.rating)"></i>
+                    </div>
+                    <p class="text-[13px] text-slate-700 leading-relaxed">{{ review.comment }}</p>
+                    <div class="text-[11px] text-slate-400 mt-3">2024-05-20 14:30</div>
+                </div>
+            </div>
+            <div *ngIf="reviews.length === 0" class="text-center py-20 text-slate-400 flex flex-col items-center">
+                <i class="far fa-star text-5xl mb-4 opacity-20"></i>
+                <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Products -->
+    <div class="mt-8 pt-4 border-t border-slate-100" *ngIf="relatedProducts.length > 0">
+        <h2 class="text-sm font-medium text-slate-500 uppercase mb-4 tracking-wider">CÓ THỂ BẠN CŨNG THÍCH</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2">
+            <app-product-card *ngFor="let p of relatedProducts" [product]="p"></app-product-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:adminContext"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:staffContext"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:UseContext"
+    },
+    "mssql4": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:productContext"
+    },
+    "mssql5": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:QuanLyBanHangOnlineContext"
+    },
+    "mssql6": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:orderContext"
+    },
+    "mssql7": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:orderdetailContext"
+    },
+    "mssql8": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:reviewContext"
+    },
+    "mssql9": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:RoleContext"
+    },
+    "mssql10": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:CartContext"
+    },
+    "mssql11": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:CartDetailContext"
+    },
+    "mssql12": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:ImportContext"
+    },
+    "mssql13": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:ImportDetailContext"
+    }
+  }
+}

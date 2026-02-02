@@ -1,0 +1,59 @@
+/* Modern Minimalist Styles */
+
+// Remove default number input spinners
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+// Custom Scrollbar for description if needed
+.prose {
+    white-space: pre-line; // Preserve line breaks from DB
+
+    h1,
+    h2,
+    h3 {
+        color: inherit; // Allow text-gray-900 to work
+        font-weight: 600;
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+    p {
+        margin-bottom: 1.5em;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 1.5em;
+        margin-bottom: 1.5em;
+    }
+
+    strong {
+        color: inherit;
+        font-weight: 600;
+    }
+}
+
+// Fade in animation
+:host {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

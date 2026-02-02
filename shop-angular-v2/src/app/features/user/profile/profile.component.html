@@ -1,0 +1,158 @@
+<div class="bg-slate-50 min-h-screen pb-10 pt-4">
+    <div class="shopee-container flex">
+        <!-- Sidebar -->
+        <div class="w-[180px] shrink-0 mr-6">
+            <div class="flex items-center space-x-3 mb-6 pl-2">
+                <div
+                    class="w-12 h-12 rounded-full bg-slate-200 border border-slate-300 flex items-center justify-center overflow-hidden">
+                    <i class="fas fa-user text-2xl text-slate-400"></i>
+                </div>
+                <div>
+                    <div class="font-bold text-sm truncate w-24">{{ user?.username }}</div>
+                    <a routerLink="/user/account/profile" class="text-xs text-slate-500 hover:text-shopee-primary"><i
+                            class="fas fa-pen mr-1"></i>Sửa hồ sơ</a>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <div
+                        class="flex items-center space-x-2 text-slate-800 font-medium mb-2 cursor-pointer text-shopee-primary">
+                        <i class="fas fa-user text-blue-600 w-5 text-center"></i>
+                        <span>Tài Khoản Của Tôi</span>
+                    </div>
+                    <div class="pl-7 space-y-2 text-sm">
+                        <a (click)="activeTab = 'profile'" [class.text-shopee-primary]="activeTab === 'profile'"
+                            class="block cursor-pointer hover:text-shopee-primary transition-colors">Hồ sơ</a>
+                        <a (click)="activeTab = 'password'" [class.text-shopee-primary]="activeTab === 'password'"
+                            class="block cursor-pointer hover:text-shopee-primary transition-colors">Đổi mật khẩu</a>
+                    </div>
+                </div>
+                <div>
+                    <div
+                        class="flex items-center space-x-2 text-slate-800 font-medium cursor-pointer hover:text-shopee-primary transition-colors">
+                        <a routerLink="/user/purchase" class="flex items-center space-x-2 w-full">
+                            <i class="fas fa-clipboard-list text-blue-600 w-5 text-center"></i>
+                            <span>Đơn Mua</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 bg-white shadow-sm rounded-sm p-8 min-h-[500px]">
+            <!-- Profile Tab -->
+            <div *ngIf="activeTab === 'profile'">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <h1 class="text-lg font-medium text-slate-800">Hồ Sơ Của Tôi</h1>
+                    <p class="text-sm text-slate-500 mt-1">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                </div>
+
+                <form [formGroup]="profileForm" (ngSubmit)="updateProfile()" class="max-w-2xl">
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Tên đăng nhập</label>
+                        <div class="text-sm text-slate-800">{{ user?.username }}</div>
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Email</label>
+                        <div class="text-sm text-slate-800">{{ user?.email }} <span
+                                class="text-shopee-primary ml-2 text-xs underline cursor-pointer">Thay đổi</span></div>
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Tên</label>
+                        <input type="text" formControlName="fullName"
+                            class="border border-slate-300 rounded-sm px-3 py-2 text-sm focus:border-slate-500 focus:outline-none w-full max-w-md">
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Số điện thoại</label>
+                        <input type="text" formControlName="phone"
+                            class="border border-slate-300 rounded-sm px-3 py-2 text-sm focus:border-slate-500 focus:outline-none w-full max-w-md">
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Địa chỉ</label>
+                        <input type="text" formControlName="address"
+                            class="border border-slate-300 rounded-sm px-3 py-2 text-sm focus:border-slate-500 focus:outline-none w-full max-w-md">
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mt-8">
+                        <div></div>
+                        <button type="submit" [disabled]="loading"
+                            class="bg-shopee-primary text-white px-6 py-2 rounded-sm text-sm hover:opacity-90 transition-opacity">Lưu</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Password Tab -->
+            <div *ngIf="activeTab === 'password'">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <h1 class="text-lg font-medium text-slate-800">Đổi Mật Khẩu</h1>
+                    <p class="text-sm text-slate-500 mt-1">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho
+                        người khác</p>
+                </div>
+
+                <form [formGroup]="passwordForm" (ngSubmit)="changePassword()" class="max-w-2xl">
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Mật khẩu hiện tại</label>
+                        <div class="w-full max-w-md">
+                            <div class="relative">
+                                <input [type]="showOldPassword ? 'text' : 'password'" formControlName="oldPassword"
+                                    class="border border-slate-300 rounded-sm px-3 py-2 text-sm focus:border-slate-500 focus:outline-none w-full pr-10">
+                                <button type="button" (click)="showOldPassword = !showOldPassword"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                    <i class="fas" [ngClass]="showOldPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                                </button>
+                            </div>
+                            <div *ngIf="passwordForm.get('oldPassword')?.invalid && passwordForm.get('oldPassword')?.touched"
+                                class="text-red-500 text-xs mt-1">Vui lòng nhập mật khẩu hiện tại</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Mật khẩu mới</label>
+                        <div class="w-full max-w-md">
+                            <div class="relative">
+                                <input [type]="showNewPassword ? 'text' : 'password'" formControlName="newPassword"
+                                    class="border border-slate-300 rounded-sm px-3 py-2 text-sm focus:border-slate-500 focus:outline-none w-full pr-10">
+                                <button type="button" (click)="showNewPassword = !showNewPassword"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                    <i class="fas" [ngClass]="showNewPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                                </button>
+                            </div>
+                            <div *ngIf="passwordForm.get('newPassword')?.invalid && passwordForm.get('newPassword')?.touched"
+                                class="text-red-500 text-xs mt-1">Mật khẩu mới phải có ít nhất 6 ký tự</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mb-6">
+                        <label class="text-sm text-slate-500 text-right">Xác nhận mật khẩu</label>
+                        <div class="w-full max-w-md">
+                            <div class="relative">
+                                <input [type]="showConfirmPassword ? 'text' : 'password'"
+                                    formControlName="confirmPassword"
+                                    class="border border-slate-300 rounded-sm px-3 py-2 text-sm focus:border-slate-500 focus:outline-none w-full pr-10">
+                                <button type="button" (click)="showConfirmPassword = !showConfirmPassword"
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                    <i class="fas" [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                                </button>
+                            </div>
+                            <div *ngIf="passwordForm.errors?.['mismatch'] && passwordForm.get('confirmPassword')?.touched"
+                                class="text-red-500 text-xs mt-1">Mật khẩu xác nhận không khớp</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-[150px_1fr] gap-6 items-center mt-8">
+                        <div></div>
+                        <button type="submit" [disabled]="loading || passwordForm.invalid"
+                            class="bg-shopee-primary text-white px-6 py-2 rounded-sm text-sm hover:opacity-90 transition-opacity disabled:opacity-50">Xác
+                            Nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

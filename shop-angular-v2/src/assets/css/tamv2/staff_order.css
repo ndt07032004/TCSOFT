@@ -1,0 +1,868 @@
+/* =============================
+   STAFF ORDER PAGE - ĐẶT TÚI
+   Modern & Beautiful Design
+   ============================= */
+
+:root {
+    --primary: #4361ee;
+    --primary-dark: #3a56d4;
+    --primary-light: #eef2ff;
+    --success: #10b981;
+    --success-dark: #059669;
+    --danger: #ef4444;
+    --danger-dark: #dc2626;
+    --warning: #f59e0b;
+    --warning-light: #fef3c7;
+    --info: #3b82f6;
+    --dark: #1f2937;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-lg: 16px;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background: linear-gradient(135deg, #f5f7fb 0%, #e9ecef 100%);
+    border-radius: var(--radius-lg);
+    height: calc(100vh - 150px);
+    max-height: calc(100vh - 150px);
+    overflow: hidden;
+}
+
+/* Left Panel - Product List */
+.left-panel {
+    flex: 1;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    border: 1px solid var(--gray-200);
+}
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--gray-50) 100%);
+    border-radius: var(--radius);
+    flex-wrap: wrap;
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-bar label {
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.filter-bar input[type="text"] {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: #fff;
+    color: var(--gray-800);
+}
+
+.filter-bar input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-light);
+    transform: translateY(-1px);
+}
+
+.filter-bar input[type="text"]::placeholder {
+    color: var(--gray-400);
+}
+
+.filter-bar select {
+    padding: 12px 16px;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    min-width: 180px;
+    cursor: pointer;
+    background: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+    color: var(--gray-800);
+    font-weight: 500;
+}
+
+.filter-bar select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.filter-bar button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+}
+
+.filter-bar button:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.filter-bar button:active {
+    transform: translateY(0);
+}
+
+.filter-bar button i {
+    font-size: 16px;
+}
+
+/* Menu Panel - Product Grid */
+.menu1-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 8px;
+    min-height: 0;
+}
+
+.menu1-panel::-webkit-scrollbar {
+    width: 10px;
+}
+
+.menu1-panel::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: 8px;
+}
+
+.menu1-panel::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.menu1-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
+/* Menu Card - Product Card */
+.menu-card {
+    background: #fff;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: visible !important;
+    min-height: auto !important;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--info));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+}
+
+.menu-card:hover::before {
+    transform: scaleX(1);
+}
+
+.menu-card.selected {
+    border-color: var(--success);
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.menu-card.selected::before {
+    background: linear-gradient(90deg, var(--success), #34d399);
+    transform: scaleX(1);
+}
+
+.menu-card img {
+    width: 100% !important;
+    height: 200px !important;
+    min-height: 200px !important;
+    max-height: 200px !important;
+    object-fit: cover !important;
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    border: 2px solid var(--gray-100);
+    transition: all 0.3s ease;
+    background: var(--gray-50);
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.menu-card .bag-image {
+    position: relative !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    overflow: visible !important;
+    display: block !important;
+}
+
+.menu-card .bag-image img {
+    width: 100% !important;
+    height: 200px !important;
+    min-height: 200px !important;
+    max-height: 200px !important;
+    object-fit: cover !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.menu-card:hover img {
+    border-color: var(--primary-light);
+    transform: scale(1.02);
+}
+
+/* Ensure all content is visible */
+.menu-card .bag-info,
+.menu-card .bag-action {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+}
+
+.menu-card .bag-info h3,
+.menu-card .bag-info .bag-name {
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.menu-card button {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.menu-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin: 8px 0 6px 0;
+    line-height: 1.5;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s;
+}
+
+.menu-card:hover h4 {
+    color: var(--primary);
+}
+
+.menu-card > p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--gray-600);
+    transition: color 0.3s;
+}
+
+.menu-card > p:first-of-type {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--danger);
+    margin-top: 8px;
+    background: linear-gradient(135deg, var(--danger), #f87171);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.menu-card .category {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 4px 12px;
+    background: var(--primary-light);
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.menu-card .brand {
+    color: var(--gray-500);
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* =============================
+   BILL PANEL – GIAO DIỆN HOÁ ĐƠN
+   ============================= */
+.bill-panel {
+    width: 400px;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    border: 1px solid var(--gray-200);
+}
+
+.bill-panel h3 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--primary);
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--primary), var(--info));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Danh sách các item trong hóa đơn */
+#bill-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-right: 8px;
+    flex: 1;
+    min-height: 200px;
+    max-height: 400px;
+    visibility: visible !important;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gray-400) var(--gray-100);
+}
+
+#bill-list::-webkit-scrollbar {
+    width: 10px;
+    display: block !important;
+}
+
+#bill-list::-webkit-scrollbar-track {
+    background: var(--gray-100);
+    border-radius: 8px;
+    display: block !important;
+}
+
+#bill-list::-webkit-scrollbar-thumb {
+    background: var(--gray-400);
+    border-radius: 8px;
+    min-height: 30px;
+    display: block !important;
+}
+
+#bill-list::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-500);
+}
+
+#bill-list:empty::before {
+    content: "Chưa có sản phẩm nào trong đơn hàng";
+    display: block;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--gray-400);
+    font-size: 14px;
+    font-style: italic;
+    background: var(--gray-50);
+    border-radius: var(--radius-sm);
+    border: 2px dashed var(--gray-300);
+}
+
+/* Mỗi sản phẩm trong bill */
+.bill-item {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #ffffff 0%, var(--gray-50) 100%);
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    border: 2px solid var(--gray-200);
+    gap: 12px;
+    min-height: 70px;
+    transition: all 0.3s ease;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 0;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: var(--shadow-sm);
+}
+
+.bill-item:hover {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+}
+
+/* Tên túi xách */
+.bill-item .item-name {
+    flex: 1 1 auto;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gray-800);
+    line-height: 1.5;
+    min-width: 100px;
+    max-width: 180px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    display: block;
+}
+
+/* Giá tiền */
+.bill-item .item-price {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--danger);
+    white-space: nowrap;
+    text-align: right;
+    min-width: 100px;
+    max-width: 120px;
+    flex-shrink: 0;
+}
+
+/* Nút xóa sản phẩm */
+.bill-item .remove-btn {
+    background: linear-gradient(135deg, var(--danger) 0%, var(--danger-dark) 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: var(--radius-sm) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    padding: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.bill-item .remove-btn:hover {
+    background: linear-gradient(135deg, var(--danger-dark) 0%, var(--danger) 100%) !important;
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Quantity Control */
+.quantity-control {
+    display: inline-flex !important;
+    border: 2px solid var(--gray-200) !important;
+    border-radius: var(--radius-sm) !important;
+    overflow: hidden !important;
+    background: #fff;
+}
+
+.qty-btn {
+    width: 32px !important;
+    height: 32px !important;
+    background: var(--gray-100) !important;
+    border: none !important;
+    color: var(--gray-700) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s ease !important;
+    font-weight: 600 !important;
+}
+
+.qty-btn.decrease { 
+    border-right: 2px solid var(--gray-200) !important; 
+}
+
+.qty-btn.increase { 
+    border-left: 2px solid var(--gray-200) !important; 
+}
+
+.qty-btn:hover { 
+    background: var(--primary) !important;
+    color: #fff !important;
+}
+
+.qty-btn:active {
+    transform: scale(0.95);
+}
+
+.quantity-input {
+    width: 50px !important;
+    height: 32px !important;
+    text-align: center !important;
+    border: none !important;
+    background: #fff !important;
+    outline: none !important;
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+    font-weight: 600 !important;
+    color: var(--gray-800) !important;
+}
+
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+/* Đảm bảo quantity control không bị wrap */
+.bill-item .quantity-control {
+    flex-shrink: 0;
+    min-width: 110px;
+    max-width: 110px;
+}
+
+/* =============================
+   TỔNG TIỀN
+   ============================= */
+.bill-total {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 3px solid var(--warning);
+    border-radius: var(--radius);
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #92400e;
+    text-align: center;
+    margin-top: 8px;
+    box-shadow: var(--shadow-lg);
+    flex-shrink: 0;
+    visibility: visible !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.bill-total::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.bill-total #total {
+    color: var(--danger);
+    font-size: 28px;
+    margin-left: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================
+   PHƯƠNG THỨC THANH TOÁN
+   ============================= */
+.payment-method {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid var(--gray-200);
+    flex-shrink: 0;
+}
+
+.payment-method h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 12px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.payment-options label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--gray-50);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.payment-options label:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.payment-options label input[type="radio"] {
+    margin: 0;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary);
+}
+
+.payment-options label input[type="radio"]:checked + i,
+.payment-options label:has(input[type="radio"]:checked) {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.payment-options label i {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+}
+
+/* =============================
+   NÚT XUẤT HÓA ĐƠN
+   ============================= */
+.export-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--success) 0%, var(--success-dark) 100%);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+    box-shadow: var(--shadow-lg);
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.export-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--success-dark) 0%, var(--success) 100%);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.export-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.export-btn:disabled {
+    background: var(--gray-400);
+    cursor: not-allowed;
+    opacity: 0.6 !important;
+}
+
+.export-btn i {
+    font-size: 20px;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray-400);
+}
+
+.empty-state i {
+    font-size: 64px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* =============================
+   RESPONSIVE
+   ============================= */
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+        max-height: none;
+        gap: 20px;
+    }
+    
+    .bill-panel {
+        width: 100%;
+        position: relative;
+        max-height: 500px;
+    }
+    
+    .menu1-panel {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .left-panel {
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+    }
+    
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+    }
+    
+    .filter-bar input[type="text"],
+    .filter-bar select {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .filter-bar button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .menu1-panel {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .menu-card img {
+        height: 160px;
+    }
+    
+    .menu-card h4 {
+        font-size: 14px;
+        min-height: 40px;
+    }
+    
+    .bill-panel {
+        width: 100%;
+        padding: 16px;
+    }
+    
+    .bill-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .bill-item .item-name {
+        max-width: 100%;
+    }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth Transitions */
+* {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}

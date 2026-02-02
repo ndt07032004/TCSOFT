@@ -1,0 +1,120 @@
+<div class="bg-gray-50 min-h-screen pt-4 pb-12">
+    <div class="shopee-container">
+        <!-- Breadcrumb / Filter Stats -->
+        <div class="flex items-center space-x-2 text-[13px] text-slate-600 mb-6 font-medium">
+            <a routerLink="/" class="hover:text-shopee-primary">Trang Chủ</a>
+            <i class="fas fa-chevron-right text-[8px] opacity-40"></i>
+            <span class="text-slate-900">Kết quả tìm kiếm</span>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-6">
+            <!-- Shopee Sidebar Filters -->
+            <aside class="w-full lg:w-48 flex-shrink-0">
+                <div class="flex items-center text-sm font-bold text-slate-900 mb-4 px-2 uppercase tracking-tight">
+                    <i class="fas fa-filter mr-2 text-[12px] text-shopee-primary"></i> Bộ lọc tìm kiếm
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Category Filter -->
+                    <div class="border-b border-slate-200 pb-4">
+                        <h3 class="text-sm font-medium text-slate-800 mb-4 px-2">Theo Danh Mục</h3>
+                        <div class="space-y-2">
+                            <label
+                                class="flex items-center space-x-3 cursor-pointer group px-2 py-1 rounded-sm hover:bg-slate-100 transition-colors">
+                                <input type="radio" name="category" value="" [(ngModel)]="filters.category"
+                                    (change)="applyFilters()"
+                                    class="w-3.5 h-3.5 text-shopee-primary border-slate-300 focus:ring-shopee-primary/20">
+                                <span class="text-xs text-slate-800">Tất Cả Sản Phẩm</span>
+                            </label>
+                            <label *ngFor="let cat of categories"
+                                class="flex items-center space-x-3 cursor-pointer group px-2 py-1 rounded-sm hover:bg-slate-100 transition-colors">
+                                <input type="radio" name="category" [value]="cat.value" [(ngModel)]="filters.category"
+                                    (change)="applyFilters()"
+                                    class="w-3.5 h-3.5 text-shopee-primary border-slate-300 focus:ring-shopee-primary/20">
+                                <span class="text-xs text-slate-800">{{ cat.label }}</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="border-b border-slate-200 pb-4">
+                        <h3 class="text-sm font-medium text-slate-800 mb-4 px-2">Khoảng Giá</h3>
+                        <div class="flex items-center space-x-2 px-2">
+                            <input type="number" [(ngModel)]="filters.minPrice" placeholder="₫ TỪ"
+                                class="w-full h-8 bg-white border border-slate-300 rounded-sm text-[11px] px-2 outline-none focus:border-slate-500 shadow-shopee">
+                            <div class="w-2 h-[1px] bg-slate-400"></div>
+                            <input type="number" [(ngModel)]="filters.maxPrice" placeholder="₫ ĐẾN"
+                                class="w-full h-8 bg-white border border-slate-300 rounded-sm text-[11px] px-2 outline-none focus:border-slate-500 shadow-shopee">
+                        </div>
+                        <div class="px-2 mt-4">
+                            <button (click)="applyFilters()"
+                                class="shopee-button w-full h-8 uppercase text-[12px] font-bold">Áp Dụng</button>
+                        </div>
+                    </div>
+
+                    <!-- Clear Button -->
+                    <div class="px-2">
+                        <button
+                            (click)="filters = {search: '', category: '', minPrice: null, maxPrice: null, sortBy: ''}; applyFilters()"
+                            class="shopee-button-outline w-full h-8 uppercase text-[12px] font-bold">Xóa Tất Cả</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid Area -->
+            <main class="flex-1">
+                <!-- Sorting & View Info -->
+
+                <!-- Product Grid -->
+                <div *ngIf="!loading">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5">
+                        <app-product-card *ngFor="let product of products" [product]="product"
+                            (onAddToCart)="addToCart($event)"></app-product-card>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div *ngIf="products.length === 0"
+                        class="flex flex-col items-center justify-center py-40 bg-white shadow-shopee rounded-sm">
+                        <i class="fas fa-search text-6xl text-slate-100 mb-6"></i>
+                        <h3 class="text-lg font-medium text-slate-800 mb-2">Không tìm thấy sản phẩm phù hợp</h3>
+                        <p class="text-sm text-slate-500 mb-8">Hãy thử điều chỉnh lại bộ lọc hoặc tìm kiếm theo từ khóa
+                            khác.</p>
+                        <button
+                            (click)="filters = {search: '', category: '', minPrice: null, maxPrice: null, sortBy: ''}; applyFilters()"
+                            class="shopee-button px-10">Thiết Lập Lại</button>
+                    </div>
+
+                    <!-- Standard Pagination -->
+                    <div *ngIf="totalPages > 1" class="mt-12 flex justify-center items-center space-x-4">
+                        <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"
+                            class="w-10 h-10 flex items-center justify-center rounded-sm text-slate-500 hover:opacity-80 disabled:opacity-20 active:scale-95">
+                            <i class="fas fa-chevron-left text-sm"></i>
+                        </button>
+
+                        <div class="flex items-center space-x-2">
+                            <button *ngFor="let page of getPageNumbers()" (click)="goToPage(page)"
+                                class="w-10 h-10 rounded-sm text-sm transition-all flex items-center justify-center font-medium"
+                                [ngClass]="currentPage === page ? 'bg-shopee-primary text-white shadow-shopee' : 'text-slate-500 hover:text-shopee-primary'">
+                                {{ page }}
+                            </button>
+                        </div>
+
+                        <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"
+                            class="w-10 h-10 flex items-center justify-center rounded-sm text-slate-500 hover:opacity-80 disabled:opacity-20 active:scale-95">
+                            <i class="fas fa-chevron-right text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading Spinner -->
+                <div *ngIf="loading"
+                    class="flex flex-col items-center justify-center py-48 bg-white shadow-shopee rounded-sm">
+                    <div class="w-12 h-12 border-4 border-slate-100 border-t-shopee-primary rounded-full animate-spin">
+                    </div>
+                    <p class="mt-6 text-sm font-medium text-slate-500 uppercase tracking-widest">Đang tải sản phẩm...
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

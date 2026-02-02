@@ -1,0 +1,218 @@
+/* ============================================
+   SIDEBAR STAFF - CẤU TRÚC CHUNG
+   Font-size CỐ ĐỊNH - KHÔNG BAO GIỜ THAY ĐỔI
+   ============================================ */
+
+/* Sidebar Container */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Brand Header */
+.sidebar .brand {
+    padding: 20px;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar .brand i {
+    font-size: 24px !important;
+    color: #ffc107;
+}
+
+.sidebar .brand span {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}
+
+/* List Container */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Link Container - KHÔNG transition font-size */
+.sidebar ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0;
+    transition: background-color 0.3s ease;
+    /* KHÔNG transition font-size */
+}
+
+.sidebar ul li a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.sidebar ul li a:active,
+.sidebar ul li a:focus,
+.sidebar ul li a:visited {
+    /* KHÔNG thay đổi font-size */
+}
+
+/* ============================================
+   MENU ITEM - FONT-SIZE CỐ ĐỊNH 15px
+   Áp dụng cho TẤT CẢ các state
+   ============================================ */
+
+/* Base Menu Item - FONT-SIZE CỐ ĐỊNH */
+.sidebar .menu-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px !important; /* CỐ ĐỊNH */
+    font-weight: normal !important; /* CỐ ĐỊNH */
+    line-height: 1.5 !important; /* CỐ ĐỊNH */
+    border-left: 3px solid transparent;
+    /* CHỈ transition các thuộc tính KHÔNG liên quan đến font */
+    transition: background-color 0.3s ease, 
+                border-left-color 0.3s ease, 
+                padding-left 0.3s ease,
+                color 0.3s ease;
+    /* KHÔNG transition: font-size, font-weight, line-height */
+}
+
+/* Hover State - FONT-SIZE VẪN CỐ ĐỊNH */
+.sidebar .menu-item:hover,
+.sidebar ul li a:hover .menu-item {
+    background: rgba(255,255,255,0.1);
+    border-left-color: #007bff;
+    padding-left: 17px;
+    font-size: 15px !important; /* VẪN CỐ ĐỊNH */
+    font-weight: normal !important; /* VẪN CỐ ĐỊNH */
+    line-height: 1.5 !important; /* VẪN CỐ ĐỊNH */
+}
+
+/* Active State (khi click) - FONT-SIZE VẪN CỐ ĐỊNH */
+.sidebar ul li a:active .menu-item,
+.sidebar ul li a:focus .menu-item,
+.sidebar ul li a:visited .menu-item {
+    font-size: 15px !important; /* VẪN CỐ ĐỊNH */
+    font-weight: normal !important; /* VẪN CỐ ĐỊNH */
+    line-height: 1.5 !important; /* VẪN CỐ ĐỊNH */
+}
+
+/* Active Link (current page) - FONT-SIZE VẪN CỐ ĐỊNH */
+.sidebar ul li a.active .menu-item,
+.sidebar ul li a.active .menu-item * {
+    background: rgba(0,123,255,0.2);
+    border-left-color: #007bff;
+    color: #007bff;
+    font-size: 15px !important; /* VẪN CỐ ĐỊNH */
+    font-weight: normal !important; /* VẪN CỐ ĐỊNH */
+    line-height: 1.5 !important; /* VẪN CỐ ĐỊNH */
+}
+
+/* Icon trong menu-item */
+.sidebar .menu-item i {
+    font-size: 18px !important; /* CỐ ĐỊNH cho icon */
+    width: 24px;
+    text-align: center;
+    color: #bdc3c7;
+    transition: color 0.3s ease; /* CHỈ transition color */
+}
+
+.sidebar ul li a:hover .menu-item i,
+.sidebar ul li a:active .menu-item i,
+.sidebar ul li a:focus .menu-item i {
+    color: #007bff;
+    font-size: 18px !important; /* VẪN CỐ ĐỊNH */
+}
+
+.sidebar ul li a.active .menu-item i {
+    color: #007bff;
+    font-size: 18px !important; /* VẪN CỐ ĐỊNH */
+}
+
+/* ============================================
+   OVERRIDE TẤT CẢ CÁC CSS KHÁC
+   Đảm bảo font-size KHÔNG BAO GIỜ thay đổi
+   ============================================ */
+
+/* Override mọi thứ có thể ảnh hưởng đến font-size */
+.sidebar .menu-item,
+.sidebar .menu-item *,
+.sidebar ul li a .menu-item,
+.sidebar ul li a .menu-item * {
+    font-size: inherit !important;
+}
+
+.sidebar .menu-item {
+    font-size: 15px !important;
+}
+
+.sidebar .menu-item:hover,
+.sidebar .menu-item:active,
+.sidebar .menu-item:focus,
+.sidebar ul li a:hover .menu-item,
+.sidebar ul li a:active .menu-item,
+.sidebar ul li a:focus .menu-item,
+.sidebar ul li a.active .menu-item,
+.sidebar ul li a.active .menu-item:hover,
+.sidebar ul li a.active .menu-item:active {
+    font-size: 15px !important;
+    font-weight: normal !important;
+    line-height: 1.5 !important;
+}
+
+/* ============================================
+   MAIN CONTENT AREA
+   ============================================ */
+
+.main {
+    margin-left: 250px;
+    padding: 0;
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .main {
+        margin-left: 0;
+    }
+    
+    /* Font-size vẫn cố định trên mobile */
+    .sidebar .menu-item,
+    .sidebar .menu-item:hover,
+    .sidebar .menu-item:active,
+    .sidebar ul li a.active .menu-item {
+        font-size: 15px !important;
+        font-weight: normal !important;
+    }
+}

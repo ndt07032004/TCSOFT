@@ -1,0 +1,231 @@
+/* ===================================
+   ORDER PAGE STYLES
+   =================================== */
+
+.main {
+    padding: 40px 20px;
+    min-height: 70vh;
+    background: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Status Tabs */
+.status-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 20px;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: #555;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: #999;
+    color: #333;
+    background: #f5f5f5;
+}
+
+.filter-btn.active {
+    background: #333;
+    color: white;
+    border-color: #333;
+}
+
+/* Order Detail Cards */
+.order_detail {
+    margin-bottom: 30px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    background: #fafafa;
+    transition: all 0.3s ease;
+}
+
+.order_detail:hover {
+    border-color: #999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-info {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.order-info p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.status-label {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    background: #e0e0e0;
+    color: #333;
+}
+
+.view-detail {
+    margin-top: 15px;
+    padding: 10px 24px;
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.view-detail:hover {
+    background: #333;
+}
+
+.view-detail a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Order Table */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.order-table thead {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.order-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.order-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 14px;
+    color: #555;
+}
+
+.order-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.order-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.order-table img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .container {
+        padding: 25px;
+    }
+
+    .status-tabs {
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding: 20px 10px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .status-tabs {
+        flex-direction: column;
+    }
+
+    .filter-btn {
+        width: 100%;
+    }
+
+    .order-table {
+        font-size: 12px;
+    }
+
+    .order-table th,
+    .order-table td {
+        padding: 10px 8px;
+    }
+
+    .order-table img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .order-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .order_detail {
+        padding: 15px;
+    }
+}
+

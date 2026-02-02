@@ -1,0 +1,357 @@
+/* ===================================
+   LOGIN PAGE STYLES
+   =================================== */
+
+/* Container chính */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+}
+
+/* Login Container */
+.login-container {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin: 40px 0;
+}
+
+/* Tiêu đề */
+.login-container h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+/* Nút QR và Face ID - Cải thiện */
+.login-container .btn.qr-login,
+.login-container .btn.faceid-login {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 14px 20px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(141, 110, 99, 0.25);
+}
+
+.login-container .btn.qr-login:hover,
+.login-container .btn.faceid-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(141, 110, 99, 0.35);
+}
+
+/* Form */
+.login-container form {
+    margin-top: 25px;
+}
+
+/* Labels */
+.login-container label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    margin-top: 18px;
+}
+
+.login-container label:first-of-type {
+    margin-top: 0;
+}
+
+/* Input fields - Cải thiện */
+.login-container input[type="email"],
+.login-container input[type="password"],
+.login-container input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    color: #333;
+    background: #ffffff;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus,
+.login-container input[type="text"]:focus {
+    outline: none;
+    border-color: #8D6E63;
+    box-shadow: 0 0 0 3px rgba(141, 110, 99, 0.1);
+    background: #fafafa;
+}
+
+.login-container input[type="email"]::placeholder,
+.login-container input[type="password"]::placeholder,
+.login-container input[type="text"]::placeholder {
+    color: #9e9e9e;
+    font-weight: 400;
+}
+
+/* Link "Quên mật khẩu" */
+.login-container label a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 13px;
+    float: right;
+    margin-top: -2px;
+    transition: color 0.2s ease;
+}
+
+.login-container label a:hover {
+    color: #1565c0;
+    text-decoration: underline;
+}
+
+/* Remember me checkbox */
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.remember input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #8D6E63;
+}
+
+.remember label {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: #616161;
+    cursor: pointer;
+}
+
+/* Nút đăng nhập chính */
+.login-container .btn.login {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(77, 52, 46, 0.25);
+    transition: all 0.3s ease;
+}
+
+.login-container .btn.login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(77, 52, 46, 0.35);
+}
+
+/* Đăng ký link */
+.register {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #616161;
+}
+
+.register a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.register a:hover {
+    color: #1565c0;
+    text-decoration: underline;
+}
+
+/* Face ID Section */
+#faceid-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+#faceid-section label {
+    font-size: 13px;
+    color: #616161;
+}
+
+#faceid-section input {
+    margin-bottom: 15px;
+}
+
+#faceid-section video,
+#faceid-section canvas {
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#faceid-section #snap,
+#faceid-section #login-faceid {
+    margin: 10px 5px;
+    padding: 10px 20px;
+}
+
+#faceid-status {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background: #fff3cd;
+    color: #856404;
+    font-size: 13px;
+}
+
+/* QR Reader */
+#qr-reader {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Footer styling trên trang login */
+.footer {
+    background: #f8f9fa;
+    padding: 50px 20px 30px;
+    margin-top: 50px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-left h3,
+.footer-right h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.footer-left p,
+.footer-right p {
+    font-size: 14px;
+    color: #616161;
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.footer-right p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-right p i {
+    color: #8D6E63;
+    font-size: 16px;
+}
+
+.footer-book-now {
+    background: linear-gradient(135deg, #6D4C41, #5D4037);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(77, 52, 46, 0.25);
+}
+
+.footer-book-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(77, 52, 46, 0.35);
+}
+
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #8D6E63;
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.footer-social a:hover {
+    background: #6D4C41;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(141, 110, 99, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .login-container {
+        padding: 30px 25px;
+        margin: 10px 0;
+    }
+
+    .login-container h2 {
+        font-size: 28px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px 20px;
+    }
+
+    .login-container h2 {
+        font-size: 24px;
+    }
+
+    .login-container .btn.qr-login,
+    .login-container .btn.faceid-login,
+    .login-container .btn.login {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+}
+

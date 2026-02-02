@@ -1,0 +1,112 @@
+<!-- Modal Overlay -->
+<div
+    style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 1rem;">
+    <div
+        style="background: white; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto;">
+        <!-- Header -->
+        <div
+            style="padding: 1.5rem; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="font-size: 1.5rem; font-weight: bold; margin: 0;">{{ product ? '✏️ Sửa sản phẩm' : '➕ Thêm sản
+                phẩm' }}</h2>
+            <button (click)="close()"
+                style="background: none; border: none; font-size: 2rem; color: #6b7280; cursor: pointer;">×</button>
+        </div>
+
+        <!-- Form -->
+        <form [formGroup]="productForm" (ngSubmit)="submit()" class="px-6 py-4">
+            <div class="space-y-4">
+                <!-- Name -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tên sản phẩm *</label>
+                    <input type="text" formControlName="name"
+                        class="w-full px-3 py-2 border rounded-md focus:ring-primary focus:border-primary" />
+                </div>
+
+                <!-- Price & Import Price -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Giá bán *</label>
+                        <input type="number" formControlName="price" class="w-full px-3 py-2 border rounded-md" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Giá nhập *</label>
+                        <input type="number" formControlName="importPrice" class="w-full px-3 py-2 border rounded-md" />
+                    </div>
+                </div>
+
+                <!-- Stock Quantity -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Số lượng tồn kho *</label>
+                    <input type="number" formControlName="stockQuantity" [readonly]="!!product"
+                        [class.bg-gray-100]="!!product" title="Vui lòng dùng chức năng Nhập hàng để tăng số lượng"
+                        class="w-full px-3 py-2 border rounded-md" />
+                    <p *ngIf="product" class="text-xs text-orange-500 mt-1">⚠️ Cập nhật số lượng qua trang Nhập hàng.
+                    </p>
+                </div>
+
+                <!-- Category -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Danh mục *</label>
+                    <select formControlName="category" class="w-full px-3 py-2 border rounded-md">
+                        <option value="">-- Chọn danh mục --</option>
+                        <option *ngFor="let cat of categories" [value]="cat.value">{{ cat.label }}</option>
+                    </select>
+                </div>
+
+                <!-- Size & Color -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Kích thước *</label>
+                        <select formControlName="size" class="w-full px-3 py-2 border rounded-md">
+                            <option *ngFor="let size of sizes" [value]="size">{{ size }}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Màu sắc *</label>
+                        <select formControlName="color" class="w-full px-3 py-2 border rounded-md">
+                            <option value="">-- Chọn màu --</option>
+                            <option *ngFor="let color of colors" [value]="color.value">{{ color.label }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Mô tả</label>
+                    <textarea formControlName="description" rows="3"
+                        class="w-full px-3 py-2 border rounded-md"></textarea>
+                </div>
+
+                <!-- Image Upload -->
+                <!-- Image Upload -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Hình ảnh</label>
+
+                    <!-- Show existing image -->
+                    <div *ngIf="product && product.imageUrl" class="mb-2">
+                        <p class="text-xs text-gray-500 mb-1">Ảnh hiện tại:</p>
+                        <img [src]="product.imageUrl" alt="Product Image"
+                            class="h-20 w-20 object-cover rounded border border-gray-200">
+                    </div>
+
+                    <input type="file" (change)="onFileSelected($event)" accept="image/*"
+                        class="w-full px-3 py-2 border rounded-md" />
+                    <p class="text-xs text-gray-500 mt-1">
+                        {{ product ? 'Chọn ảnh mới để thay thế (không bắt buộc)' : 'Chọn file ảnh (jpg, png)' }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="mt-6 flex justify-end gap-3">
+                <button type="button" (click)="close()" class="px-4 py-2 border rounded-md hover:bg-gray-100">
+                    Hủy
+                </button>
+                <button type="submit" [disabled]="loading || productForm.invalid"
+                    class="px-4 py-2 bg-primary text-white rounded-md hover:bg-secondary disabled:bg-gray-300">
+                    {{ loading ? 'Đang lưu...' : (product ? 'Cập nhật' : 'Thêm mới') }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

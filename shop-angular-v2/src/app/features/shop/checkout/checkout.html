@@ -1,0 +1,138 @@
+<div class="bg-gray-50 min-h-screen pt-4 pb-20">
+    <div class="shopee-container">
+        <!-- Header Section -->
+        <div class="flex items-center space-x-2 text-[14px] text-slate-600 mb-6 bg-white p-3 shadow-shopee rounded-sm">
+            <a routerLink="/"
+                class="text-shopee-primary font-bold border-r pr-4 border-slate-200 uppercase tracking-tighter text-lg">Trang
+                Chủ</a>
+            <span class="pl-2 font-medium text-slate-900 border-l pl-4 border-slate-200">Thanh toán</span>
+        </div>
+
+        <form #checkoutForm="ngForm" (ngSubmit)="onSubmit()" class="space-y-6">
+            <!-- Delivery Address -->
+            <div class="bg-white shadow-shopee rounded-sm overflow-hidden">
+                <div
+                    class="h-1 bg-[repeating-linear-gradient(45deg,#ee4d2d,#ee4d2d_33px,#ffffff_33px,#ffffff_41px,#4d5eee_41px,#4d5eee_74px,#ffffff_74px,#ffffff_82px)]">
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center space-x-2 text-shopee-primary mb-6">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3 class="text-lg font-medium leading-none">Địa chỉ nhận hàng</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-800 mb-3">Họ và tên</label>
+                            <input type="text" name="receiverName" [(ngModel)]="orderData.receiverName" required
+                                placeholder="Nhập tên người nhận"
+                                class="w-full h-10 px-4 border border-slate-200 rounded-sm focus:border-slate-400 outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-800 mb-3">Số điện thoại</label>
+                            <input type="text" name="receiverPhone" [(ngModel)]="orderData.receiverPhone" required
+                                placeholder="Nhập số điện thoại"
+                                class="w-full h-10 px-4 border border-slate-200 rounded-sm focus:border-slate-400 outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-800 mb-3">Địa chỉ cụ thể</label>
+                            <input type="text" name="shippingAddress" [(ngModel)]="orderData.shippingAddress" required
+                                placeholder="Số nhà, tên đường..."
+                                class="w-full h-10 px-4 border border-slate-200 rounded-sm focus:border-slate-400 outline-none text-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Manifest -->
+            <div class="bg-white shadow-shopee rounded-sm">
+                <div class="p-4 border-b border-slate-100 grid grid-cols-12 gap-4 text-sm text-slate-500 font-medium">
+                    <div class="col-span-6 flex items-center">Sản phẩm</div>
+                    <div class="col-span-2 text-center">Đơn giá</div>
+                    <div class="col-span-2 text-center">Số lượng</div>
+                    <div class="col-span-2 text-right">Thành tiền</div>
+                </div>
+
+                <div class="divide-y divide-slate-100">
+                    <div *ngFor="let item of cartItems" class="p-4 grid grid-cols-12 gap-4 items-center">
+                        <div class="col-span-6 flex items-center space-x-4">
+                            <div
+                                class="w-10 h-10 bg-slate-50 border border-slate-100 rounded-sm overflow-hidden flex-shrink-0">
+                                <img [src]="getImageUrl(item.image)" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-sm text-slate-800 font-medium line-clamp-1 truncate">{{ item.productName
+                                }}</span>
+                        </div>
+                        <div class="col-span-2 text-center text-sm text-slate-500">₫{{ item.price | number:'1.0-0' }}
+                        </div>
+                        <div class="col-span-2 text-center text-sm text-slate-500">{{ item.quantity }}</div>
+                        <div class="col-span-2 text-right text-sm text-slate-800 font-medium">₫{{ item.subTotal |
+                            number:'1.0-0' }}</div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-slate-50 p-6 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-100">
+                    <div class="flex-1">
+                        <label class="block text-sm text-slate-800 font-medium mb-2">Lời nhắn (Tùy chọn)</label>
+                        <input type="text" name="orderNotes" [(ngModel)]="orderData.orderNotes"
+                            placeholder="Lưu ý cho người bán..."
+                            class="md:max-w-md w-full h-10 px-4 border border-slate-200 rounded-sm focus:border-slate-400 outline-none text-sm">
+                    </div>
+                    <div class="flex items-center space-x-12 min-w-[300px] justify-end">
+                        <span class="text-sm text-slate-500">Đơn vị vận chuyển: <span
+                                class="text-emerald-500 font-bold ml-2">Vận Chuyển Tiêu Chuẩn</span></span>
+                        <div class="text-right">
+                            <p class="text-[12px] text-slate-500 mb-1">Tổng số tiền ({{ cartItems.length }} sản phẩm):
+                            </p>
+                            <p class="text-lg text-shopee-primary font-bold">₫{{ calculateTotal() | number:'1.0-0' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment -->
+            <div class="bg-white shadow-shopee rounded-sm divide-y divide-slate-100">
+                <div class="p-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-lg font-medium text-slate-900 leading-none">Phương thức thanh toán</h3>
+                        <div class="flex items-center space-x-4">
+                            <button type="button"
+                                class="px-6 py-2 bg-white border border-shopee-primary text-shopee-primary text-sm font-medium rounded-sm">Thanh
+                                toán khi nhận hàng</button>
+                            <button type="button"
+                                class="px-6 py-2 bg-slate-50 border border-slate-100 text-slate-400 text-sm font-medium rounded-sm cursor-not-allowed grayscale opacity-60">Chuyển
+                                khoản / Ví</button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-end space-y-4 pt-10 border-t border-slate-50">
+                        <div class="grid grid-cols-2 gap-x-20 gap-y-4 text-right">
+                            <span class="text-sm text-slate-500">Tổng tiền hàng:</span>
+                            <span class="text-sm text-slate-800 font-medium">₫{{ calculateTotal() | number:'1.0-0'
+                                }}</span>
+
+                            <span class="text-sm text-slate-500">Phí vận chuyển:</span>
+                            <span class="text-sm text-slate-800 font-medium">₫0</span>
+
+                            <span class="text-sm text-slate-500 font-bold">Tổng thanh toán:</span>
+                            <span class="text-3xl text-shopee-primary font-bold">₫{{ calculateTotal() | number:'1.0-0'
+                                }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <p class="text-[13px] text-slate-500 text-center md:text-left leading-relaxed">
+                        Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo <br>
+                        <a href="#" class="text-shopee-primary hover:underline">Điều khoản Shopee</a>
+                    </p>
+                    <button type="submit" [disabled]="loading || cartItems.length === 0 || checkoutForm.invalid"
+                        class="shopee-button px-20 h-12 text-base font-bold uppercase shadow-md disabled:opacity-50 min-w-[280px]">
+                        {{ loading ? 'Đang xử lý...' : 'Đặt hàng' }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

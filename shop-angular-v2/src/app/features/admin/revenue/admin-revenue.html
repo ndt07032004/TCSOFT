@@ -1,0 +1,200 @@
+<div class="container py-10 px-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12">
+        <div>
+            <a routerLink="/admin/dashboard"
+                class="inline-flex items-center text-slate-500 hover:text-shopee-primary text-xs font-semibold uppercase tracking-widest mb-4 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i> Quay lại bảng điều khiển
+            </a>
+            <h1 class="text-4xl font-black text-slate-950 tracking-tighter mb-2">Báo Cáo Lợi Nhuận</h1>
+            <p class="text-slate-500 font-medium">Phân tích hiệu quả kinh doanh, chi phí và lợi nhuận ròng.</p>
+        </div>
+
+        <button (click)="exportToExcel()" [disabled]="!hasData"
+            class="btn-primary flex items-center space-x-3 px-8 disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="fas fa-file-excel text-xs"></i>
+            <span class="uppercase tracking-widest text-[11px]">Xuất Báo Cáo</span>
+        </button>
+    </div>
+
+    <!-- Filter Card -->
+    <div class="bg-white border border-slate-200 rounded-xl p-8 mb-8 shadow-sm">
+        <form [formGroup]="filterForm" (ngSubmit)="filterRevenue()"
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
+            <div class="flex flex-col space-y-2">
+                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Từ ngày</label>
+                <input type="date" formControlName="fromDate"
+                    class="px-4 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-slate-950 outline-none transition-all">
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Đến ngày</label>
+                <input type="date" formControlName="toDate"
+                    class="px-4 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-slate-950 outline-none transition-all">
+            </div>
+            <button type="submit" class="btn-primary h-[42px] flex items-center justify-center space-x-2"
+                [disabled]="loading || filterForm.invalid">
+                <i class="fas fa-search text-xs"></i>
+                <span class="uppercase tracking-widest text-[11px]">{{ loading ? 'Đang tải...' : 'Lọc dữ liệu' }}</span>
+            </button>
+        </form>
+    </div>
+
+    <div *ngIf="loading"
+        class="flex flex-col items-center justify-center py-32 bg-white border border-slate-100 rounded-xl mb-8">
+        <div class="w-12 h-12 border-4 border-slate-100 border-t-slate-900 rounded-full animate-spin"></div>
+        <p class="mt-6 text-[10px] font-black text-slate-400 uppercase tracking-widest">Đang phân tích dữ liệu...</p>
+    </div>
+
+    <div *ngIf="!loading && hasData && revenueData">
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <!-- REVENUE -->
+            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between h-40">
+                <div class="flex items-center space-x-4">
+                    <div
+                        class="w-10 h-10 bg-emerald-50 text-emerald-500 rounded-lg flex items-center justify-center text-lg border border-emerald-100">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Doanh thu</span>
+                </div>
+                <p class="text-2xl font-black text-slate-950 tracking-tighter">{{ (revenueData.totalRevenue || 0) |
+                    number:'1.0-0' }}₫</p>
+                <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-emerald-500" style="width: 100%"></div>
+                </div>
+            </div>
+
+            <!-- IMPORT COST -->
+            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between h-40">
+                <div class="flex items-center space-x-4">
+                    <div
+                        class="w-10 h-10 bg-rose-50 text-rose-500 rounded-lg flex items-center justify-center text-lg border border-rose-100">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Chi phí nhập</span>
+                </div>
+                <p class="text-2xl font-black text-slate-950 tracking-tighter">{{ (revenueData.totalImportCost || 0) |
+                    number:'1.0-0' }}₫</p>
+                <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-rose-500"
+                        [style.width.%]="(revenueData.totalImportCost / revenueData.totalRevenue) * 100"></div>
+                </div>
+            </div>
+
+            <!-- PROFIT -->
+            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between h-40">
+                <div class="flex items-center space-x-4">
+                    <div
+                        class="w-10 h-10 bg-indigo-50 text-indigo-500 rounded-lg flex items-center justify-center text-lg border border-indigo-100">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Lợi nhuận ròng</span>
+                </div>
+                <p class="text-2xl font-black text-indigo-600 tracking-tighter">{{ totalProfit | number:'1.0-0' }}₫</p>
+                <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-indigo-500" [style.width.%]="(totalProfit / revenueData.totalRevenue) * 100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ORDERS -->
+            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between h-40">
+                <div class="flex items-center space-x-4">
+                    <div
+                        class="w-10 h-10 bg-slate-50 text-slate-500 rounded-lg flex items-center justify-center text-lg border border-slate-100">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Tổng đơn hàng</span>
+                </div>
+                <p class="text-2xl font-black text-slate-950 tracking-tighter">{{ revenueData.totalOrders }}</p>
+                <div class="w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-slate-800" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="bg-white border border-slate-200 rounded-xl p-8 mb-8 shadow-sm">
+            <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6">Biểu đồ doanh thu theo ngày
+            </h3>
+
+            <div class="h-64 flex items-end space-x-2 md:space-x-4 pb-4 border-b border-slate-100">
+                <div *ngIf="dailyStats.length === 0"
+                    class="w-full h-full flex items-center justify-center text-slate-400 text-sm">
+                    Chưa có dữ liệu biểu đồ
+                </div>
+
+                <div *ngFor="let day of dailyStats"
+                    class="flex-1 flex flex-col items-center justify-end group h-full relative">
+
+                    <!-- Tooltip -->
+                    <div
+                        class="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900 text-white text-[10px] font-bold py-1 px-2 rounded whitespace-nowrap z-10">
+                        {{ day.revenue | number:'1.0-0' }}₫
+                    </div>
+
+                    <!-- Bar -->
+                    <div class="w-full max-w-[40px] bg-emerald-200 group-hover:bg-emerald-500 rounded-t-sm transition-all duration-300 bar-anim"
+                        [style.height]="getBarHeight(day.revenue)">
+                    </div>
+
+                    <!-- Label -->
+                    <div
+                        class="mt-2 text-[10px] text-slate-400 font-bold rotate-45 transform origin-top-left translate-x-2">
+                        {{ day.date.substring(0, 5) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detail Table -->
+        <div class="table-card bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+            <div class="px-8 py-5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Danh sách đơn hàng</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="table w-full text-left">
+                    <thead class="bg-slate-50/50">
+                        <tr>
+                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Mã ĐH
+                            </th>
+                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Thời
+                                gian</th>
+                            <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Khách
+                                hàng</th>
+                            <th
+                                class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
+                                Giá trị</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr *ngFor="let item of revenueData.orders" class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4">
+                                <span class="text-xs font-black text-slate-900">#{{ item.idDH }}</span>
+                            </td>
+                            <td class="px-6 py-4 text-xs font-bold text-slate-500">
+                                {{ item.orderDate | date:'dd/MM/yyyy HH:mm' }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-slate-800">{{ item.receiverName || 'Khách lẻ'
+                                        }}</span>
+                                    <span class="text-[10px] text-slate-400">{{ item.customerEmail }}</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right text-xs font-black text-emerald-600 tracking-tighter">
+                                {{ item.totalPrice | number:'1.0-0' }}₫
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!loading && !hasData" class="py-32 text-center bg-white border border-slate-100 rounded-xl">
+        <i class="fas fa-chart-pie text-4xl text-slate-200 mb-6"></i>
+        <p class="text-[11px] font-black text-slate-400 uppercase tracking-widest">Không có dữ liệu trong khoảng thời
+            gian này</p>
+    </div>
+</div>

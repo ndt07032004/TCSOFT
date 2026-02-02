@@ -1,0 +1,120 @@
+<div class="auth-container">
+    <div class="auth-card">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <a routerLink="/" class="inline-flex items-center text-shopee-primary mb-4">
+                <i class="fas fa-shopping-bag text-3xl mr-2"></i>
+                <span class="text-2xl font-bold tracking-tight">HTTL SHOP</span>
+            </a>
+            <h1 class="text-2xl font-bold text-slate-800">Đăng ký</h1>
+            <p class="text-slate-500 text-sm mt-2">Tạo tài khoản mới</p>
+        </div>
+
+        <!-- Error Alert -->
+        <div *ngIf="error"
+            class="bg-red-50 text-red-500 text-sm p-3 rounded-lg mb-4 flex items-center border border-red-100">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            {{ error }}
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- Full Name -->
+            <div class="auth-input-group group">
+                <input type="text" formControlName="fullName" class="auth-input"
+                    [ngClass]="{'error': submitted && f['fullName'].errors}" placeholder="Họ và tên">
+                <div *ngIf="submitted && f['fullName'].errors" class="auth-error-msg">
+                    Vui lòng nhập họ tên
+                </div>
+            </div>
+
+            <!-- Email Input -->
+            <div class="auth-input-group group">
+                <input type="email" formControlName="email" class="auth-input"
+                    [ngClass]="{'error': submitted && f['email'].errors}" placeholder="Email">
+                <div *ngIf="submitted && f['email'].errors" class="auth-error-msg">
+                    <div *ngIf="f['email'].errors['required']">Vui lòng nhập email</div>
+                    <div *ngIf="f['email'].errors['email']">Email không hợp lệ</div>
+                </div>
+            </div>
+
+            <!-- Phone Input -->
+            <div class="auth-input-group group">
+                <input type="text" formControlName="phone" class="auth-input"
+                    [ngClass]="{'error': submitted && f['phone'].errors}" placeholder="Số điện thoại">
+                <div *ngIf="submitted && f['phone'].errors" class="auth-error-msg">
+                    Vui lòng nhập số điện thoại
+                </div>
+            </div>
+
+            <!-- Address Input -->
+            <div class="auth-input-group group">
+                <input type="text" formControlName="address" class="auth-input"
+                    [ngClass]="{'error': submitted && f['address'].errors}" placeholder="Địa chỉ">
+                <div *ngIf="submitted && f['address'].errors" class="auth-error-msg">
+                    Vui lòng nhập địa chỉ
+                </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="auth-input-group group relative">
+                <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="auth-input pr-10"
+                    [ngClass]="{'error': submitted && f['password'].errors}" placeholder="Mật khẩu">
+                <button type="button" (click)="showPassword = !showPassword"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                    <i class="fas" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                </button>
+                <div *ngIf="submitted && f['password'].errors" class="auth-error-msg">
+                    <div *ngIf="f['password'].errors['required']">Vui lòng nhập mật khẩu</div>
+                    <div *ngIf="f['password'].errors['minlength']">Mật khẩu phải có ít nhất 6 ký tự</div>
+                </div>
+            </div>
+
+            <!-- Confirm Password Input -->
+            <div class="auth-input-group group relative">
+                <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirmPassword"
+                    class="auth-input pr-10" [ngClass]="{'error': submitted && f['confirmPassword'].errors}"
+                    placeholder="Nhập lại mật khẩu">
+                <button type="button" (click)="showConfirmPassword = !showConfirmPassword"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                    <i class="fas" [ngClass]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                </button>
+                <div *ngIf="submitted && f['confirmPassword'].errors" class="auth-error-msg">
+                    <div *ngIf="f['confirmPassword'].errors['required']">Vui lòng nhập lại mật khẩu</div>
+                    <div *ngIf="f['confirmPassword'].errors['mustMatch']">Mật khẩu không khớp</div>
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="loading" class="auth-btn">
+                <i *ngIf="loading" class="fas fa-circle-notch fa-spin mr-2"></i>
+                {{ loading ? 'Đang xử lý...' : 'Đăng ký' }}
+            </button>
+        </form>
+
+        <div class="mt-6 text-center text-sm text-slate-500">
+            Bạn đã có tài khoản?
+            <a routerLink="/login" class="text-shopee-primary font-bold hover:underline ml-1">Đăng nhập</a>
+        </div>
+
+        <div class="auth-divider">
+            <span>Hoặc đăng ký với</span>
+        </div>
+
+        <!-- Social Login -->
+        <div class="grid grid-cols-2 gap-3">
+            <button class="social-btn">
+                <i class="fab fa-google text-rose-500 text-lg mr-2"></i>
+                Google
+            </button>
+            <button class="social-btn">
+                <i class="fab fa-facebook text-blue-600 text-lg mr-2"></i>
+                Facebook
+            </button>
+        </div>
+
+        <div class="mt-6 text-center text-xs text-slate-400 px-4 leading-relaxed">
+            Bằng việc đăng kí, bạn đồng ý với HTTL SHOP về
+            <a href="#" class="text-shopee-primary hover:underline">Điều khoản dịch vụ</a> &
+            <a href="#" class="text-shopee-primary hover:underline">Chính sách bảo mật</a>
+        </div>
+    </div>
+</div>

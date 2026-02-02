@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shopee-Style Design System */
+:root {
+    --shopee-orange: #ee4d2d;
+    --shopee-bg: #f5f5f5;
+    --shopee-text: #222222;
+}
+
+body {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: var(--shopee-bg);
+    color: var(--shopee-text);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+    .shopee-container {
+        @apply max-w-[1200px] mx-auto px-4;
+    }
+
+    .shopee-button {
+        @apply bg-shopee-primary text-white px-4 py-2 rounded-sm hover:opacity-90 transition-opacity flex items-center justify-center text-sm font-medium border border-transparent;
+    }
+
+    .shopee-button-outline {
+        @apply border border-shopee-primary text-shopee-primary bg-white hover:bg-shopee-primary/5 transition-colors px-4 py-2 rounded-sm text-sm font-medium;
+    }
+
+    .shopee-card {
+        @apply bg-white shadow-shopee rounded-sm overflow-hidden border border-transparent hover:border-shopee-primary/10 hover:shadow-shopee-hover transition-all;
+    }
+
+    .shopee-price {
+        @apply text-shopee-primary font-medium;
+    }
+
+    .shopee-badge-mall {
+        @apply bg-shopee-mall text-white text-[10px] uppercase font-bold px-1 rounded-sm leading-tight;
+    }
+}
+
+/* Custom Utilities for Shopee Search Bar */
+.search-bar-shadow {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, .09);
+}
+
+/* Fix for broken arbitrary value compilation in current environment */
+.transition-shopee {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modern Auth UI Utilities */
+.auth-container {
+    @apply min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-50 to-slate-100;
+}
+
+.auth-card {
+    @apply bg-white/80 backdrop-blur-xl w-full max-w-[420px] p-8 rounded-3xl border border-white/50 relative overflow-hidden;
+    box-shadow: 0 8px 30px rgb(0, 0, 0, 0.04);
+}
+
+/* Subtle accent decoration on top of card */
+.auth-card::before {
+    content: "";
+    @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-shopee-primary via-orange-400 to-yellow-400 opacity-80;
+}
+
+.auth-title {
+    @apply text-3xl font-extrabold text-slate-800 text-center mb-2 tracking-tight;
+}
+
+.auth-subtitle {
+    @apply text-slate-500 text-sm text-center mb-8 font-medium;
+}
+
+.auth-input-group {
+    @apply relative mb-5;
+}
+
+.auth-input {
+    @apply w-full h-12 px-5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm transition-all duration-300 outline-none focus:bg-white focus:border-shopee-primary focus:ring-4 focus:ring-shopee-primary/10 group-hover:border-slate-300 placeholder:text-slate-400 font-medium;
+}
+
+.auth-input.error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/10 bg-red-50/30;
+}
+
+.auth-error-msg {
+    @apply text-xs text-red-500 mt-1.5 ml-1 font-semibold flex items-center animate-pulse;
+}
+
+.auth-btn {
+    @apply w-full h-12 bg-gradient-to-r from-shopee-primary to-orange-600 text-white font-bold rounded-xl shadow-lg shadow-shopee-primary/25 hover:shadow-xl hover:shadow-orange-500/30 hover:-translate-y-0.5 active:translate-y-0 active:shadow-md transition-all duration-300 flex items-center justify-center uppercase tracking-wider text-[13px] mt-6 relative overflow-hidden;
+}
+
+/* Shine effect on hover */
+.auth-btn::after {
+    content: "";
+    @apply absolute inset-0 bg-white/20 translate-x-[-100%] transition-transform duration-500 ease-in-out skew-x-12;
+}
+
+.auth-btn:hover::after {
+    @apply translate-x-[200%];
+}
+
+.auth-btn:disabled {
+    @apply opacity-70 cursor-not-allowed shadow-none transform-none cursor-not-allowed bg-slate-300 from-slate-300 to-slate-400;
+}
+
+.auth-divider {
+    @apply flex items-center my-7 text-[11px] text-slate-400 uppercase font-bold tracking-widest;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    @apply flex-1 h-[1px] bg-slate-200;
+}
+
+.auth-divider span {
+    @apply px-4 text-slate-300;
+}
+
+.social-btn {
+    @apply flex items-center justify-center h-12 w-full border border-slate-200 rounded-xl hover:bg-slate-50 hover:border-slate-300 hover:shadow-md transition-all duration-300 text-slate-600 text-sm font-semibold;
+}

@@ -1,0 +1,168 @@
+<div class="container py-12 px-6">
+    <!-- Header Area -->
+    <div class="header mb-12 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+            <h1 class="text-slate-900">Bảng Điều Khiển</h1>
+            <p class="text-slate-500 font-medium">Giám sát hiệu suất hoạt động kinh doanh của bạn theo thời gian thực.
+            </p>
+        </div>
+        <div class="flex items-center space-x-4 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+            <div class="px-4 text-right">
+                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Cập nhật lúc
+                </p>
+                <p class="text-sm font-bold text-slate-700">{{ stats.lastUpdate | date:'HH:mm • dd/MM' }}</p>
+            </div>
+            <div class="w-[1px] h-8 bg-slate-100"></div>
+            <button
+                class="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-md transition-all">
+                <i class="fas fa-sync-alt text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- Revenue Card -->
+        <div class="stat-card">
+            <div class="icon-wrapper revenue mr-5">
+                <i class="fas fa-chart-line text-2xl"></i>
+            </div>
+            <div class="content">
+                <h3>Doanh Thu</h3>
+                <div class="flex items-baseline space-x-2">
+                    <p class="value">{{ stats.totalRevenue | number:'1.0-0' }}₫</p>
+                    <span class="text-[10px] font-bold text-emerald-500">+12%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Card -->
+        <div class="stat-card">
+            <div class="icon-wrapper orders mr-5">
+                <i class="fas fa-shopping-bag text-2xl"></i>
+            </div>
+            <div class="content">
+                <h3>Đơn Hàng</h3>
+                <p class="value">{{ stats.totalOrders }}</p>
+            </div>
+        </div>
+
+        <!-- Products Card -->
+        <div class="stat-card">
+            <div class="icon-wrapper products mr-5">
+                <i class="fas fa-cube text-2xl"></i>
+            </div>
+            <div class="content">
+                <h3>Sản Phẩm</h3>
+                <p class="value">{{ stats.totalProducts }}</p>
+            </div>
+        </div>
+
+        <!-- Inventory Alert Card -->
+        <div class="stat-card">
+            <div class="icon-wrapper users mr-5" [class.bg-rose-500]="stats.lowStockCount > 0">
+                <i class="fas fa-exclamation-triangle text-2xl"></i>
+            </div>
+            <div class="content">
+                <h3>Sắp Hết Hàng</h3>
+                <p class="value text-rose-600">{{ stats.lowStockCount }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Management Hub Area -->
+    <div class="mb-12" *ngIf="authService.isAdmin() || hasAnyVisibleCard()">
+        <h2 class="text-xl font-bold text-slate-800 mb-6">Trung Tâm Quản Trị</h2>
+
+        <!-- All cards in unified grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Product Management -->
+            <a *ngIf="showCard('product_view')" routerLink="/admin/products" class="action-card products">
+                <div class="icon bg-teal-50 text-teal-500">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="info">
+                    <h4>Kho Hàng</h4>
+                    <p>Sản phẩm & Tồn kho</p>
+                </div>
+            </a>
+
+            <!-- Order Management -->
+            <a *ngIf="showCard('order_view')" routerLink="/admin/orders" class="action-card orders">
+                <div class="icon bg-emerald-50 text-emerald-500">
+                    <i class="fas fa-file-invoice"></i>
+                </div>
+                <div class="info">
+                    <h4>Đơn Hàng</h4>
+                    <p>Theo dõi đơn hàng</p>
+                </div>
+            </a>
+
+            <!-- User Management -->
+            <a *ngIf="showCard('user_view')" routerLink="/admin/users" class="action-card users">
+                <div class="icon bg-indigo-50 text-indigo-500">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="info">
+                    <h4>Khách Hàng</h4>
+                    <p>Thông tin người dùng</p>
+                </div>
+            </a>
+
+            <!-- Staff Management -->
+            <a *ngIf="showCard('staff_view')" routerLink="/admin/staffs" class="action-card staffs">
+                <div class="icon bg-amber-50 text-amber-500">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="info">
+                    <h4>Nhân Sự</h4>
+                    <p>Nhân viên & Phân quyền</p>
+                </div>
+            </a>
+
+            <!-- Role Management -->
+            <a *ngIf="showCard('role_view')" routerLink="/admin/roles" class="action-card roles">
+                <div class="icon bg-purple-50 text-purple-500">
+                    <i class="fas fa-user-tag"></i>
+                </div>
+                <div class="info">
+                    <h4>Vai Trò</h4>
+                    <p>Quản lý vai trò</p>
+                </div>
+            </a>
+
+            <!-- Revenue Report -->
+            <a *ngIf="showCard('revenue_view')" routerLink="/admin/revenue" class="action-card revenue">
+                <div class="icon bg-rose-50 text-rose-500">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="info">
+                    <h4>Báo Cáo Thống Kê</h4>
+                    <p>Phân tích hiệu quả</p>
+                </div>
+            </a>
+
+            <!-- Inventory Management -->
+            <a *ngIf="showCard('import_view')" routerLink="/admin/imports" class="action-card imports">
+                <div class="icon bg-blue-50 text-blue-500">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="info">
+                    <h4>Quản Lý Nhập Kho</h4>
+                    <p>Nhập hàng mới</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hub Empty State for Staff/Users with NO permissions -->
+    <div class="mb-12 py-12 px-8 bg-white border border-dashed border-slate-200 rounded-2xl text-center"
+        *ngIf="!authService.isAdmin() && !hasAnyVisibleCard() && !loading">
+        <div class="w-16 h-16 bg-slate-50 text-slate-300 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-lock text-xl"></i>
+        </div>
+        <h3 class="text-slate-900 font-bold mb-1">Chưa được cấp quyền truy cập</h3>
+        <p class="text-slate-500 text-sm max-w-md mx-auto">Vui lòng liên hệ Quản trị viên để được cấp quyền xem các mục
+            quản trị tương ứng.</p>
+    </div>
+</div>

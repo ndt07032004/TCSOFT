@@ -1,0 +1,21 @@
+/* Admin Orders Styles - Nexus Console */
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.table-card {
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Status select dropdown within table */
+select {
+    outline: none;
+}

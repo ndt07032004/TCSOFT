@@ -1,0 +1,110 @@
+<header class="bg-shopee-primary text-white w-full sticky top-0 z-50">
+    <!-- Shopee Top Utility Bar -->
+    <div class="shopee-container py-1.5 flex justify-between items-center text-[13px] font-light">
+        <div class="flex items-center space-x-4">
+            <a href="#" class="hover:opacity-80 transition-opacity">Kênh Người Bán</a>
+            <div class="w-[1px] h-3 bg-white/40"></div>
+            <a href="#" class="hover:opacity-80 transition-opacity">Tải ứng dụng</a>
+            <div class="w-[1px] h-3 bg-white/40"></div>
+            <div class="flex items-center space-x-2">
+                <span>Kết nối</span>
+                <a href="#"><i class="fab fa-facebook hover:opacity-80"></i></a>
+                <a href="#"><i class="fab fa-instagram hover:opacity-80"></i></a>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-1.5 cursor-pointer hover:opacity-80">
+                <i class="far fa-bell"></i>
+                <span>Thông báo</span>
+            </div>
+            <div class="flex items-center space-x-1.5 cursor-pointer hover:opacity-80">
+                <i class="far fa-question-circle"></i>
+                <span>Hỗ trợ</span>
+            </div>
+            <div class="flex items-center space-x-1.5 cursor-pointer hover:opacity-80">
+                <i class="fas fa-globe"></i>
+                <span>Tiếng Việt</span>
+                <i class="fas fa-chevron-down text-[10px]"></i>
+            </div>
+
+            <!-- User Status / Auth -->
+            <ng-container *ngIf="currentUser; else authLinks">
+                <div class="relative group py-1 flex items-center space-x-2 cursor-pointer">
+                    <div
+                        class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center overflow-hidden border border-white/20">
+                        <i class="fas fa-user text-[10px]"></i>
+                    </div>
+                    <span class="font-medium">{{ userEmail.split('@')[0] }}</span>
+
+                    <!-- Dropdown -->
+                    <div
+                        class="absolute top-full right-0 w-40 bg-white text-slate-700 shadow-md rounded-sm invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all z-50 mt-1 origin-top-right border border-slate-100 overflow-hidden">
+                        <a *ngIf="isAdmin || isStaff" routerLink="/admin"
+                            class="block px-4 py-3 hover:bg-slate-50 hover:text-shopee-primary text-sm">Quản Trị Hệ
+                            Thống</a>
+                        <a routerLink="/user/account/profile"
+                            class="block px-4 py-3 hover:bg-slate-50 hover:text-shopee-primary text-sm">Tài Khoản Của
+                            Tôi</a>
+                        <a routerLink="/user/purchase"
+                            class="block px-4 py-3 hover:bg-slate-50 hover:text-shopee-primary text-sm">Đơn Mua</a>
+                        <div class="border-t border-slate-100"></div>
+                        <button (click)="logout()"
+                            class="w-full text-left px-4 py-3 hover:bg-slate-50 hover:text-shopee-primary text-sm">Đăng
+                            xuất</button>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #authLinks>
+                <div class="flex items-center space-x-4 font-medium">
+                    <a routerLink="/register" class="hover:opacity-80">Đăng Ký</a>
+                    <div class="w-[1px] h-3 bg-white/40"></div>
+                    <a routerLink="/login" class="hover:opacity-80">Đăng Nhập</a>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+    <!-- Shopee Main Search Bar Section -->
+    <div class="shopee-container h-[85px] flex items-center pb-2">
+        <!-- Logo -->
+        <a routerLink="/" class="flex-shrink-0 mr-12 group">
+            <div class="flex items-center text-white">
+                <i class="fas fa-shopping-bag text-4xl mr-3 transform group-hover:-rotate-12 transition-transform"></i>
+                <span class="text-3xl font-bold tracking-tight">HTTL SHOP</span>
+            </div>
+        </a>
+
+        <!-- Search Bar -->
+        <div class="flex-1 max-w-[840px] px-2">
+            <div class="bg-white p-1 rounded-sm flex items-center shadow-shopee">
+                <input type="text" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()"
+                    placeholder="Đăng ký ngay để nhận voucher giảm 100k cho đơn hàng đầu tiên"
+                    class="flex-1 px-4 py-2 text-slate-800 text-sm focus:outline-none placeholder:text-slate-400">
+                <button (click)="onSearch()"
+                    class="bg-shopee-primary px-8 py-2.5 rounded-sm hover:opacity-90 transition-opacity flex items-center justify-center">
+                    <i class="fas fa-search text-white text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Cart Icon -->
+        <div class="flex-shrink-0 ml-12 px-4 relative group cursor-pointer">
+            <a routerLink="/cart" class="text-white relative block">
+                <i class="fas fa-shopping-cart text-2xl"></i>
+                <span *ngIf="(cartCount$ | async) || 0 > 0"
+                    class="absolute -top-1.5 -right-3 bg-white text-shopee-primary text-[11px] font-bold rounded-full h-4.5 min-w-[1.2rem] px-1 flex items-center justify-center border-2 border-shopee-primary">
+                    {{ (cartCount$ | async) }}
+                </span>
+            </a>
+
+            <!-- Hover Cart Summary -->
+            <div class="absolute top-full right-0 w-80 bg-white text-slate-700 shadow-lg rounded-sm invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all z-50 mt-4 origin-top-right border border-slate-100 p-8 text-center"
+                *ngIf="((cartCount$ | async) || 0) === 0">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-shopping-basket text-6xl text-slate-100 mb-4"></i>
+                    <p class="text-sm font-medium text-slate-500">Chưa có sản phẩm</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

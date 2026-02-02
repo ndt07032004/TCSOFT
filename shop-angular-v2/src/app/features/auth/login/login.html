@@ -1,0 +1,73 @@
+<div class="auth-container">
+    <div class="auth-card">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <a routerLink="/" class="inline-flex items-center text-shopee-primary mb-4">
+                <i class="fas fa-shopping-bag text-3xl mr-2"></i>
+                <span class="text-2xl font-bold tracking-tight">HTTL SHOP</span>
+            </a>
+            <h1 class="text-2xl font-bold text-slate-800">Đăng nhập</h1>
+            <p class="text-slate-500 text-sm mt-2">Chào mừng bạn quay trở lại!</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Email Input -->
+            <div class="auth-input-group group">
+                <input id="email" type="email" formControlName="email" class="auth-input"
+                    [ngClass]="{'error': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
+                    placeholder="Email hoặc tên đăng nhập">
+            </div>
+
+            <!-- Password Input -->
+            <div class="auth-input-group group relative">
+                <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                    class="auth-input pr-10"
+                    [ngClass]="{'error': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+                    placeholder="Mật khẩu">
+                <button type="button" (click)="showPassword = !showPassword"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                    <i class="fas" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+                </button>
+            </div>
+
+            <div class="flex justify-between items-center mb-6">
+                <!-- Remember Me (Optional - placeholder logic) -->
+                <label class="flex items-center space-x-2 cursor-pointer group">
+                    <input type="checkbox" formControlName="rememberMe"
+                        class="w-4 h-4 rounded border-gray-300 text-shopee-primary focus:ring-shopee-primary/20">
+                    <span class="text-sm text-slate-500 group-hover:text-slate-700">Ghi nhớ đăng nhập</span>
+                </label>
+
+                <a routerLink="/forgot-password" class="text-sm font-medium text-shopee-primary hover:text-orange-600">
+                    Quên mật khẩu?
+                </a>
+            </div>
+
+            <button type="submit" [disabled]="loading || loginForm.invalid" class="auth-btn">
+                <i *ngIf="loading" class="fas fa-circle-notch fa-spin mr-2"></i>
+                {{ loading ? 'Đang đăng nhập...' : 'Đăng nhập' }}
+            </button>
+        </form>
+
+        <div class="auth-divider">
+            <span>Hoặc đăng nhập với</span>
+        </div>
+
+        <!-- Social Login -->
+        <div class="grid grid-cols-2 gap-3">
+            <button class="social-btn">
+                <i class="fab fa-google text-rose-500 text-lg mr-2"></i>
+                Google
+            </button>
+            <button class="social-btn">
+                <i class="fab fa-facebook text-blue-600 text-lg mr-2"></i>
+                Facebook
+            </button>
+        </div>
+
+        <div class="mt-8 text-center text-sm text-slate-500">
+            Bạn chưa có tài khoản?
+            <a routerLink="/register" class="text-shopee-primary font-bold hover:underline ml-1">Đăng ký ngay</a>
+        </div>
+    </div>
+</div>
