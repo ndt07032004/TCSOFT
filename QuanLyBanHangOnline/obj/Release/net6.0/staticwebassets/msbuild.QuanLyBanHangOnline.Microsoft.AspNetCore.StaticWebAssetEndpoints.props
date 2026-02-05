@@ -1,0 +1,136 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/ao1-20260129082715.5hs5dlgyq1.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\ao1-20260129082715.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5hs5dlgyq1"},{"Name":"integrity","Value":"sha256-aUC02b8NmEELMZF9JggHIBixd0EoApwfFr/XBTUB7bA="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/ao1-20260129082715.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"73337"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022aUC02b8NmEELMZF9JggHIBixd0EoApwfFr/XBTUB7bA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:27:15 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/ao1-20260129082715.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\ao1-20260129082715.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-aUC02b8NmEELMZF9JggHIBixd0EoApwfFr/XBTUB7bA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"73337"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022aUC02b8NmEELMZF9JggHIBixd0EoApwfFr/XBTUB7bA=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:27:15 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/aoke-20260125193648.4ecvqsea8d.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\aoke-20260125193648.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4ecvqsea8d"},{"Name":"integrity","Value":"sha256-hAWY/EBRi2T7OO8enBp4leCfIedJKarzBP\u002BWOhF35xI="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/aoke-20260125193648.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"11764"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022hAWY/EBRi2T7OO8enBp4leCfIedJKarzBP\u002BWOhF35xI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 Jan 2026 12:36:48 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/aoke-20260125193648.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\aoke-20260125193648.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-hAWY/EBRi2T7OO8enBp4leCfIedJKarzBP\u002BWOhF35xI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"11764"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022hAWY/EBRi2T7OO8enBp4leCfIedJKarzBP\u002BWOhF35xI=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 Jan 2026 12:36:48 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/aovestnam1nutdongbasic-20260129003024.4nd7r78rw1.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\aovestnam1nutdongbasic-20260129003024.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4nd7r78rw1"},{"Name":"integrity","Value":"sha256-MAhf3jxKj3LfRwyLcAMLs2WoYx9vGE6QTMiJbuP/IWc="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/aovestnam1nutdongbasic-20260129003024.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"428832"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022MAhf3jxKj3LfRwyLcAMLs2WoYx9vGE6QTMiJbuP/IWc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 28 Jan 2026 17:30:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/aovestnam1nutdongbasic-20260129003024.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\aovestnam1nutdongbasic-20260129003024.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-MAhf3jxKj3LfRwyLcAMLs2WoYx9vGE6QTMiJbuP/IWc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"428832"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022MAhf3jxKj3LfRwyLcAMLs2WoYx9vGE6QTMiJbuP/IWc=\u0022"},{"Name":"Last-Modified","Value":"Wed, 28 Jan 2026 17:30:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/bo1-20260125152442.eutjpg42eh.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\bo1-20260125152442.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"eutjpg42eh"},{"Name":"integrity","Value":"sha256-1tYzoDTG5U0QIGpKVt6KNyOV5fQxJDJA4BXmi\u002BJjL44="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/bo1-20260125152442.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"15745"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00221tYzoDTG5U0QIGpKVt6KNyOV5fQxJDJA4BXmi\u002BJjL44=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 Jan 2026 08:24:42 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/bo1-20260125152442.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\bo1-20260125152442.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1tYzoDTG5U0QIGpKVt6KNyOV5fQxJDJA4BXmi\u002BJjL44="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"15745"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00221tYzoDTG5U0QIGpKVt6KNyOV5fQxJDJA4BXmi\u002BJjL44=\u0022"},{"Name":"Last-Modified","Value":"Sun, 25 Jan 2026 08:24:42 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-khoc-ngoi-jean-nam-n-dng-rng-mu-xanh-en-retro-unisex-fabuman-cht-b-khng-phai-bigsize-20260129020236.ss8xmyjn6p.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-khoc-ngoi-jean-nam-n-dng-rng-mu-xanh-en-retro-unisex-fabuman-cht-b-khng-phai-bigsize-20260129020236.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"ss8xmyjn6p"},{"Name":"integrity","Value":"sha256-NMdK5kfU/1iaUIshS1zidLnpyrpdtfPCCIB2rmkhXI0="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/o-khoc-ngoi-jean-nam-n-dng-rng-mu-xanh-en-retro-unisex-fabuman-cht-b-khng-phai-bigsize-20260129020236.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"121450"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022NMdK5kfU/1iaUIshS1zidLnpyrpdtfPCCIB2rmkhXI0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 28 Jan 2026 19:02:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-khoc-ngoi-jean-nam-n-dng-rng-mu-xanh-en-retro-unisex-fabuman-cht-b-khng-phai-bigsize-20260129020236.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-khoc-ngoi-jean-nam-n-dng-rng-mu-xanh-en-retro-unisex-fabuman-cht-b-khng-phai-bigsize-20260129020236.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-NMdK5kfU/1iaUIshS1zidLnpyrpdtfPCCIB2rmkhXI0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"121450"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022NMdK5kfU/1iaUIshS1zidLnpyrpdtfPCCIB2rmkhXI0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 28 Jan 2026 19:02:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-thun-b-hoa-beyoutiful-gent-20260126091824.1obqs796wg.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-thun-b-hoa-beyoutiful-gent-20260126091824.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"1obqs796wg"},{"Name":"integrity","Value":"sha256-bxqo5Ef4tFCUck1sJ1HVzZoCWplzhvGmE6bnSNgXnrY="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/o-thun-b-hoa-beyoutiful-gent-20260126091824.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"147070"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022bxqo5Ef4tFCUck1sJ1HVzZoCWplzhvGmE6bnSNgXnrY=\u0022"},{"Name":"Last-Modified","Value":"Mon, 26 Jan 2026 02:18:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-thun-b-hoa-beyoutiful-gent-20260126091824.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-thun-b-hoa-beyoutiful-gent-20260126091824.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-bxqo5Ef4tFCUck1sJ1HVzZoCWplzhvGmE6bnSNgXnrY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"147070"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022bxqo5Ef4tFCUck1sJ1HVzZoCWplzhvGmE6bnSNgXnrY=\u0022"},{"Name":"Last-Modified","Value":"Mon, 26 Jan 2026 02:18:24 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-thun-en-new-skull-tee-nam-20260129080938.13o5gmnb57.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-thun-en-new-skull-tee-nam-20260129080938.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"13o5gmnb57"},{"Name":"integrity","Value":"sha256-056vB6ZfKx2UuEb7QaGtTaWj2hOyZTFds2l\u002BMVWyKO0="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/o-thun-en-new-skull-tee-nam-20260129080938.jpg"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"26183"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022056vB6ZfKx2UuEb7QaGtTaWj2hOyZTFds2l\u002BMVWyKO0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:09:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-thun-en-new-skull-tee-nam-20260129080938.jpg">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-thun-en-new-skull-tee-nam-20260129080938.jpg'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-056vB6ZfKx2UuEb7QaGtTaWj2hOyZTFds2l\u002BMVWyKO0="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"26183"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u0022056vB6ZfKx2UuEb7QaGtTaWj2hOyZTFds2l\u002BMVWyKO0=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:09:38 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-thun-trn-100-cotton-comfitex-happy-fabric-240gsm-form-oversize-unisex-nam-n-at500-verdant-20260129080317.lbveumwje8.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-thun-trn-100-cotton-comfitex-happy-fabric-240gsm-form-oversize-unisex-nam-n-at500-verdant-20260129080317.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"lbveumwje8"},{"Name":"integrity","Value":"sha256-EUx0dwEfTBZPF3kjPUe0PLba1huTSicAnmS04hX1bmM="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/o-thun-trn-100-cotton-comfitex-happy-fabric-240gsm-form-oversize-unisex-nam-n-at500-verdant-20260129080317.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"241376"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022EUx0dwEfTBZPF3kjPUe0PLba1huTSicAnmS04hX1bmM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:03:17 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/o-thun-trn-100-cotton-comfitex-happy-fabric-240gsm-form-oversize-unisex-nam-n-at500-verdant-20260129080317.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\o-thun-trn-100-cotton-comfitex-happy-fabric-240gsm-form-oversize-unisex-nam-n-at500-verdant-20260129080317.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-EUx0dwEfTBZPF3kjPUe0PLba1huTSicAnmS04hX1bmM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"241376"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022EUx0dwEfTBZPF3kjPUe0PLba1huTSicAnmS04hX1bmM=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:03:17 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/qun-n-joggerqun-ng-rng-nam-n-phong-cch-hn-quc-mc-cc-cht-phi-line-20260129081736.1akc0kqbh3.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\qun-n-joggerqun-ng-rng-nam-n-phong-cch-hn-quc-mc-cc-cht-phi-line-20260129081736.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"1akc0kqbh3"},{"Name":"integrity","Value":"sha256-V94gGflR/HOzOatx4Qt2FvTFRafkVnM1XSr\u002B/Bvyo7E="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/qun-n-joggerqun-ng-rng-nam-n-phong-cch-hn-quc-mc-cc-cht-phi-line-20260129081736.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"33820"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022V94gGflR/HOzOatx4Qt2FvTFRafkVnM1XSr\u002B/Bvyo7E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:17:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/qun-n-joggerqun-ng-rng-nam-n-phong-cch-hn-quc-mc-cc-cht-phi-line-20260129081736.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\qun-n-joggerqun-ng-rng-nam-n-phong-cch-hn-quc-mc-cc-cht-phi-line-20260129081736.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-V94gGflR/HOzOatx4Qt2FvTFRafkVnM1XSr\u002B/Bvyo7E="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"33820"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022V94gGflR/HOzOatx4Qt2FvTFRafkVnM1XSr\u002B/Bvyo7E=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:17:36 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/qun-short-logo-teelabqun-i-basic-dy-rt-cht-cotton-tha-mi-thong-mt-thm-ht-m-hi-nng-ng-20260129082149.rju0qopk6q.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\qun-short-logo-teelabqun-i-basic-dy-rt-cht-cotton-tha-mi-thong-mt-thm-ht-m-hi-nng-ng-20260129082149.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rju0qopk6q"},{"Name":"integrity","Value":"sha256-WRtStkQUwt/0GLrAbp5J2IEPOaJ6iBe71GgV7vYi8eo="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/qun-short-logo-teelabqun-i-basic-dy-rt-cht-cotton-tha-mi-thong-mt-thm-ht-m-hi-nng-ng-20260129082149.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"65788"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022WRtStkQUwt/0GLrAbp5J2IEPOaJ6iBe71GgV7vYi8eo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:21:49 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/qun-short-logo-teelabqun-i-basic-dy-rt-cht-cotton-tha-mi-thong-mt-thm-ht-m-hi-nng-ng-20260129082149.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\qun-short-logo-teelabqun-i-basic-dy-rt-cht-cotton-tha-mi-thong-mt-thm-ht-m-hi-nng-ng-20260129082149.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-WRtStkQUwt/0GLrAbp5J2IEPOaJ6iBe71GgV7vYi8eo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"65788"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u0022WRtStkQUwt/0GLrAbp5J2IEPOaJ6iBe71GgV7vYi8eo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:21:49 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/vng-tay-thp-titan-cao-cp-khng-g-kin-accessories-lc-tay-nam-n-unisex-ph-kin-thi-trang-basic-nhiu-mu-ty-chn-20260129082945.2n3vxlvcj8.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\vng-tay-thp-titan-cao-cp-khng-g-kin-accessories-lc-tay-nam-n-unisex-ph-kin-thi-trang-basic-nhiu-mu-ty-chn-20260129082945.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2n3vxlvcj8"},{"Name":"integrity","Value":"sha256-0rZb50ujNvaaHG9cLShIsu8qkH2j83Y\u002BSlS0RS7wuTk="},{"Name":"label","Value":"_content/QuanLyBanHangOnline/images/products/vng-tay-thp-titan-cao-cp-khng-g-kin-accessories-lc-tay-nam-n-unisex-ph-kin-thi-trang-basic-nhiu-mu-ty-chn-20260129082945.webp"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"24454"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u00220rZb50ujNvaaHG9cLShIsu8qkH2j83Y\u002BSlS0RS7wuTk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:29:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/QuanLyBanHangOnline/images/products/vng-tay-thp-titan-cao-cp-khng-g-kin-accessories-lc-tay-nam-n-unisex-ph-kin-thi-trang-basic-nhiu-mu-ty-chn-20260129082945.webp">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\vng-tay-thp-titan-cao-cp-khng-g-kin-accessories-lc-tay-nam-n-unisex-ph-kin-thi-trang-basic-nhiu-mu-ty-chn-20260129082945.webp'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0rZb50ujNvaaHG9cLShIsu8qkH2j83Y\u002BSlS0RS7wuTk="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"24454"},{"Name":"Content-Type","Value":"image/webp"},{"Name":"ETag","Value":"\u00220rZb50ujNvaaHG9cLShIsu8qkH2j83Y\u002BSlS0RS7wuTk=\u0022"},{"Name":"Last-Modified","Value":"Thu, 29 Jan 2026 01:29:45 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+  </ItemGroup>
+</Project>

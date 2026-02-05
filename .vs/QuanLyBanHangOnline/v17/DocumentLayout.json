@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "E:\\TCSOFT\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{4A89D7BE-B1A4-4C88-A637-B13C5DFB23B8}|QuanLyBanHangOnline\\QuanLyBanHangOnline.csproj|e:\\tcsoft\\quanlybanhangonline\\validations\\users\\createuservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A89D7BE-B1A4-4C88-A637-B13C5DFB23B8}|QuanLyBanHangOnline\\QuanLyBanHangOnline.csproj|solutionrelative:quanlybanhangonline\\validations\\users\\createuservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A89D7BE-B1A4-4C88-A637-B13C5DFB23B8}|QuanLyBanHangOnline\\QuanLyBanHangOnline.csproj|e:\\tcsoft\\quanlybanhangonline\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A89D7BE-B1A4-4C88-A637-B13C5DFB23B8}|QuanLyBanHangOnline\\QuanLyBanHangOnline.csproj|solutionrelative:quanlybanhangonline\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.Product.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
@@ -31,6 +39,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CreateUserValidator.cs",
+              "DocumentMoniker": "E:\\TCSOFT\\QuanLyBanHangOnline\\Validations\\Users\\CreateUserValidator.cs",
+              "RelativeDocumentMoniker": "QuanLyBanHangOnline\\Validations\\Users\\CreateUserValidator.cs",
+              "ToolTip": "E:\\TCSOFT\\QuanLyBanHangOnline\\Validations\\Users\\CreateUserValidator.cs",
+              "RelativeToolTip": "QuanLyBanHangOnline\\Validations\\Users\\CreateUserValidator.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T03:09:01.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\TCSOFT\\QuanLyBanHangOnline\\Program.cs",
+              "RelativeDocumentMoniker": "QuanLyBanHangOnline\\Program.cs",
+              "ToolTip": "E:\\TCSOFT\\QuanLyBanHangOnline\\Program.cs",
+              "RelativeToolTip": "QuanLyBanHangOnline\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T02:06:30.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "dbo.Product.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.Product.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.Product.sql",
@@ -39,7 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ProductService.cs",
               "DocumentMoniker": "E:\\TCSOFT\\QuanLyBanHangOnline\\Services\\Implementations\\ProductService.cs",
               "RelativeDocumentMoniker": "QuanLyBanHangOnline\\Services\\Implementations\\ProductService.cs",
@@ -51,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "dbo.ProductDetail.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.ProductDetail.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.ProductDetail.sql",
@@ -60,7 +93,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "dbo.Accounts.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.Accounts.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.Accounts.sql",
@@ -69,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "dbo.Role.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.Role.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/NDT/QuanLyBanQuanAoOnline/True/SqlTable/dbo.Role.sql",

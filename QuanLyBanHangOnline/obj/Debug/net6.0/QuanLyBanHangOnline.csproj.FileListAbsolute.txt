@@ -263,3 +263,4 @@ E:\TCSOFT\QuanLyBanHangOnline\obj\Debug\net6.0\QuanLyBanHangOnline.genruntimecon
 E:\TCSOFT\QuanLyBanHangOnline\obj\Debug\net6.0\ref\QuanLyBanHangOnline.dll
 E:\TCSOFT\QuanLyBanHangOnline\bin\Debug\net6.0\QuanLyBanHangOnline.staticwebassets.runtime.json
 E:\TCSOFT\QuanLyBanHangOnline\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+E:\TCSOFT\QuanLyBanHangOnline\obj\Debug\net6.0\QuanLyBanHangOnline.sourcelink.json

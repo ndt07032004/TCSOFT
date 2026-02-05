@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuanLyBanHangOnline</name>
+    </assembly>
+    <members>
+        <member name="M:QuanLyBanHangOnline.Controllers.Staffs.StaffsController.IsOwnerOrAdmin(System.Int32)">
+            <summary>
+            Hàm phụ kiểm tra xem người dùng hiện tại có phải là chủ sở hữu tài khoản hoặc là Admin không.
+            </summary>
+        </member>
+        <member name="P:QuanLyBanHangOnline.DTO.Auth.LoginDto.Email">
+            <example>nxtql99@gmail.com</example>
+        </member>
+        <member name="P:QuanLyBanHangOnline.DTO.Auth.LoginDto.Password">
+            <example>123456</example>
+        </member>
+        <member name="P:QuanLyBanHangOnline.DTO.Role.UpdatePermissionsDto.Permissions">
+            <summary>
+            Danh sách các mã quyền được tích chọn từ ma trận.
+            </summary>
+            <example>
+            ["product_view", "product_post", "product_edit","product_delete", "role_permission"]
+            </example>
+        </member>
+    </members>
+</doc>

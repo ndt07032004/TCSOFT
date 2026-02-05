@@ -17,3 +17,26 @@
         background: #6b7280;
     }
 }
+
+/* Animation cho phần hiển thị QR */
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style bổ sung cho nút thanh toán được chọn */
+button.border-shopee-primary {
+    border-color: #ee4d2d !important;
+    color: #ee4d2d !important;
+    background-color: #fff !important;
+}

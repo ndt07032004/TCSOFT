@@ -53,7 +53,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngular",
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200", "http://localhost:55365") // URL của ứng dụng Angular
+            policy.WithOrigins("http://localhost:4200", "http://localhost:55365", "https://0hhxdcd6-4200.asse.devtunnels.ms") // URL của ứng dụng Angular
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });

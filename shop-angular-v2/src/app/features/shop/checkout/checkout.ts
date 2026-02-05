@@ -19,6 +19,9 @@ export class CheckoutComponent implements OnInit {
     cartItems: CartDetailResult[] = [];
     loading = false;
 
+    // Thêm biến theo dõi phương thức thanh toán
+    paymentMethod: 'COD' | 'QR' = 'COD';
+
     orderData = {
         receiverName: '',
         receiverPhone: '',
@@ -53,14 +56,9 @@ export class CheckoutComponent implements OnInit {
                         const ids = itemsStr.split(',').map((id: string) => +id);
                         this.cartItems = cart.details.filter(item => ids.includes(item.idSP));
                         if (this.cartItems.length === 0) {
-                            // Fallback provided IDs invalid or not in cart
                             this.router.navigate(['/cart']);
                         }
                     } else {
-                        // If no specific items selected, maybe just use all? Or redirect back?
-                        // Usually "Checkout" means check out what is in the flow.
-                        // Assuming defaulting to all is fine if no selection passed, OR 
-                        // enforce strict selection. Let's default to all like before if no param.
                         this.cartItems = cart.details;
                     }
                 });
@@ -83,6 +81,11 @@ export class CheckoutComponent implements OnInit {
         return `${environment.imageBaseUrl}/${prefix}${cleanPath}`;
     }
 
+    // Hàm chọn phương thức thanh toán
+    setPaymentMethod(method: 'COD' | 'QR'): void {
+        this.paymentMethod = method;
+    }
+
     onSubmit(): void {
         if (this.checkoutForm.invalid) {
             // Touched all fields to show errors
@@ -94,11 +97,16 @@ export class CheckoutComponent implements OnInit {
 
         this.loading = true;
 
+        // Xử lý logic đính kèm phương thức thanh toán vào Ghi chú (OrderNotes)
+        // để không cần sửa Backend
+        const methodPrefix = this.paymentMethod === 'QR' ? '[THANH TOÁN QR] ' : '[COD] ';
+        const finalNotes = methodPrefix + (this.orderData.orderNotes || '');
+
         const orderRequest: OrderRequest = {
             receiverName: this.orderData.receiverName,
             receiverPhone: this.orderData.receiverPhone,
             shippingAddress: this.orderData.shippingAddress,
-            orderNotes: this.orderData.orderNotes,
+            orderNotes: finalNotes, // Sử dụng ghi chú đã xử lý
             items: this.cartItems.map(item => ({
                 idSP: item.idSP,
                 quantity: item.quantity
